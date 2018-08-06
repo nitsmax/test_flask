@@ -41,11 +41,9 @@ class ApiDetails(EmbeddedDocument):
             headers[header["headerKey"]]=header["headerValue"]
         return headers
 
-class User(Document):
-    firstName = StringField(max_length=100, required=True)
-    lastName = StringField(max_length=100, required=True)
-    email = StringField(max_length=100, required=True, unique=True)
-    password = StringField(max_length=255, required=True)
+class Emoji(Document):
+    name = StringField(max_length=255, required=True)
+    description = StringField(max_length=2000, required=True)
     imagefile = StringField(max_length=255)
     date_created = DateTimeField(default=datetime.datetime.utcnow)
     date_modified = DateTimeField(default=datetime.datetime.utcnow)

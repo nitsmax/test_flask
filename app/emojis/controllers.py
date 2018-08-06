@@ -1,92 +1,97 @@
 import os
 from bson.json_util import dumps
 from bson.objectid import ObjectId
-from flask import Blueprint, request, Response, g
+from flask import Blueprint, request, Response, g, url_for
 from flask import current_app as app
 from app.commons import build_response
-from app.users.models import User
+from app.emojis.models import Emoji
 from app.auth.models import login_required
 from app.commons.utils import update_document
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 
 
-users = Blueprint('users_blueprint', __name__,
-                    url_prefix='/api/users')
+emojis = Blueprint('emojis_blueprint', __name__,
+                    url_prefix='/api/emojis')
 
-
-@users.route('', methods=['POST'])
-def create_user():
+@emojis.route('', methods=['POST'])
+def create_emoji():
     """
     Create a story from the provided json
     :param json:
     :return:
     """
-    user = User()
+    emoji = Emoji()
 
     # check if the post request has the file part
     if 'Image' in request.files:
-        print(request.files)
+        imageDirectory = os.path.join(app.config.get('APP_ROOT'), 'static', 'uploads', 'emojis')
         file = request.files['Image']
+
         filename = secure_filename(file.filename)
-        print(filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        user.imagefile = filename
+        file.save(os.path.join(imageDirectory, filename))
+        emoji.imagefile = filename
 
     
-    user.firstName = request.form['firstName']
-    user.lastName = request.form['lastName']
-    user.email = request.form['email']
-    user.password = generate_password_hash(request.form['password'])
+    emoji.name = request.form['name']
+    emoji.description = request.form['description']
 
-    '''
-    content = request.get_json(silent=True)
-
-    user = User()
-    user.firstName = content.get("firstName")
-    user.lastName = content.get("lastName")
-    user.email = content.get("email")
-    user.password = generate_password_hash(content.get("password"))
-    '''
-    
     try:
-        user_id = user.save()
+        emoji_id = emoji.save()
     except Exception as e:
         return build_response.build_json({"error": str(e)})
 
     return build_response.build_json({
-        "_id": str(user_id.id)
+        "_id": str(emoji_id.id)
     })
 
 
-@users.route('')
+@emojis.route('')
 #@login_required
-def read_users():
+def read_emojis():
     """
     find list of intents for the agent
     :return:
     """
-    users = User.objects().order_by('lastName')
-    return build_response.sent_json(users.to_json())
+    emojis = Emoji.objects().order_by('name')
+    if not emojis:
+        return build_response.build_json([])
+    #return build_response.sent_json(emojis.to_json())
+
+    response_emojis = []
+
+    for emoji in emojis:
+        obj_emoji = {
+            'id': str(emoji.id),
+            'name': emoji.name,
+            'description': emoji.description,
+            'image': url_for('emojis_file', path=emoji.imagefile, _external=True),
+            'date_created': emoji.date_created.isoformat(),
+            'date_modified': emoji.date_modified.isoformat()
+        }
+        response_emojis.append(obj_emoji)
+
+    print(response_emojis)
+    return build_response.build_json(response_emojis)
 
 
-@users.route('/<id>')
-def read_user(id):
+@emojis.route('/<id>')
+def read_emoji(id):
     """
     Find details for the given intent id
     :param id:
     :return:
     """
     return Response(response=dumps(
-        User.objects.get(
+        Emoji.objects.get(
             id=ObjectId(
                 id)).to_mongo().to_dict()),
         status=200,
         mimetype="application/json")
 
 
-@users.route('/<id>', methods=['PUT'])
-def update_user(id):
+@emojis.route('/<id>', methods=['PUT'])
+def update_emoji(id):
     """
     Update a story from the provided json
     :param intent_id:
@@ -94,13 +99,13 @@ def update_user(id):
     :return:
     """
     json_data = loads(request.get_data().decode('utf-8'))
-    user = User.objects.get(id=ObjectId(id))
-    user = update_document(user, json_data)
-    user_id.save()
+    emoji = Emoji.objects.get(id=ObjectId(id))
+    emoji = update_document(emoji, json_data)
+    emoji_id.save()
     return 'success', 200
 
 
-@users.route('/<id>', methods=['DELETE'])
+@emojis.route('/<id>', methods=['DELETE'])
 def delete_intent(id):
     """
     Delete a intent
@@ -129,7 +134,7 @@ except ImportError:
     from io import StringIO
 
 
-@users.route('/export', methods=['GET'])
+@emojis.route('/export', methods=['GET'])
 def export_intents():
     """
     Deserialize and export Mongoengines as jsonfile
@@ -147,7 +152,7 @@ from flask import abort
 from bson.json_util import loads
 
 
-@users.route('/import', methods=['POST'])
+@emojis.route('/import', methods=['POST'])
 def import_intents():
     """
     Convert json files to Intents objects and insert to MongoDB

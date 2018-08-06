@@ -35,6 +35,10 @@ def login():
         return build_response.build_json({"error": 'Password is incorrect.'})
 
     exp = datetime.datetime.utcnow() + datetime.timedelta(hours=app.config['TOKEN_EXPIRE_HOURS'])
-    encoded = jwt.encode({'email': email, 'exp': exp},
+    auth_token = jwt.encode({'email': email, 'exp': exp},
                          app.config['KEY'], algorithm='HS256')
-    return build_response.build_json({'email': email, 'token': encoded.decode('utf-8')})
+
+    refresh_token = jwt.encode({'email': email},
+                         app.config['KEY'], algorithm='HS256')
+
+    return build_response.build_json({'email': email, 'auth_token': auth_token.decode('utf-8'), 'refresh_token': refresh_token.decode('utf-8')})

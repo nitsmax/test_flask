@@ -8,12 +8,17 @@ class Config(object):
     MONGODB_PORT = 27017
     MONGODB_USERNAME = ""
     MONGODB_USERNAME = ""
+    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+    APP_ROOT = os.path.join(ROOT_DIR, 'app')
 
     # Intent Classifier model detials
     MODELS_DIR = "model_files/"
     INTENT_MODEL_NAME = "intent.model"
     DEFAULT_FALLBACK_INTENT_NAME = "fallback"
     DEFAULT_WELCOME_INTENT_NAME = "init_conversation"
+
+    #File Upload Path
+    UPLOAD_FOLDER = "uploads/"
 
     #Auth token
     KEY = 'secret'

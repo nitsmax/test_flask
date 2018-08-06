@@ -90,7 +90,7 @@ def update_intent(id):
     :param json:
     :return:
     """
-    json_data = loads(request.get_data())
+    json_data = loads(request.get_data().decode('utf-8'))
     intent = Intent.objects.get(id=ObjectId(id))
     intent = update_document(intent, json_data)
     intent.save()
