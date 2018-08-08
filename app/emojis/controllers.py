@@ -4,7 +4,7 @@ from bson.objectid import ObjectId
 from flask import Blueprint, request, Response, g, url_for
 from flask import current_app as app
 from app.commons import build_response
-from app.emojis.models import Emoji
+from app.emojis.models import Emoji, Category
 from app.auth.models import login_required
 from app.commons.utils import update_document
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -13,6 +13,37 @@ from werkzeug.utils import secure_filename
 
 emojis = Blueprint('emojis_blueprint', __name__,
                     url_prefix='/api/emojis')
+
+@emojis.route('/categories')
+def get_categories():
+    '''
+    For inserting the categories
+    '''
+    '''categories = ['Bollywood', 'Hollywood', 'Modern']
+    for cat in categories:
+        category = Category()
+        category.name = cat
+        category.save()
+
+    return build_response.sent_ok()
+    '''
+    categories = Category.objects().order_by('name')
+    if not categories:
+        return build_response.build_json([])
+    #return build_response.sent_json(emojis.to_json())
+
+    response_categories = []
+
+    for category in categories:
+        obj_category = {
+            'id': str(category.id),
+            'name': category.name,
+            'date_created': category.date_created.isoformat(),
+            'date_modified': category.date_modified.isoformat()
+        }
+        response_categories.append(obj_category)
+
+    return build_response.build_json(response_categories)
 
 @emojis.route('', methods=['POST'])
 def create_emoji():
@@ -32,9 +63,25 @@ def create_emoji():
         file.save(os.path.join(imageDirectory, filename))
         emoji.imagefile = filename
 
-    
+    if request.form.get("category"):
+        category = Category.objects(name=request.form.get("category")).get()
+        if category:
+            emoji.category = category
+
+    if request.form.get("tags"):
+        tags_string = request.form.get("tags")
+        tags = [x.strip() for x in tags_string.split(',')]   
+        emoji.tags = tags
+
+    if request.form['isPaid'].lower() == 'true':
+        emoji.isPaid = True
+    else:
+        emoji.isPaid = False
+
     emoji.name = request.form['name']
-    emoji.description = request.form['description']
+
+    if request.form.get("description"):
+        emoji.description = request.form['description']
 
     try:
         emoji_id = emoji.save()
@@ -49,11 +96,28 @@ def create_emoji():
 @emojis.route('')
 #@login_required
 def read_emojis():
+    print(request.args.get('category'))
     """
-    find list of intents for the agent
+    find list of emojis for the agent
     :return:
     """
-    emojis = Emoji.objects().order_by('name')
+    emojis = Emoji.objects()
+    if request.args.get('name'):
+        emojis = emojis.filter(name__iexact=request.args.get('name'))
+
+    if request.args.get('category'):
+        category = Category.objects(name__iexact=request.args.get('category')).get()
+        emojis = emojis.filter(category=category)
+
+    if request.args.get('q'):
+        emojis = emojis.filter(tags__icontains=request.args.get('q'))
+
+    if request.args.get('isPaid'):
+        emojis = emojis.filter(isPaid=True) if request.args.get('isPaid').lower() == 'true' else emojis.filter(isPaid=False)
+
+
+    #emojis.find()
+
     if not emojis:
         return build_response.build_json([])
     #return build_response.sent_json(emojis.to_json())
@@ -64,14 +128,16 @@ def read_emojis():
         obj_emoji = {
             'id': str(emoji.id),
             'name': emoji.name,
+            'isPaid': emoji.isPaid,
+            'tags': emoji.tags,
+            'category' : emoji.category.name if emoji.category else '',
             'description': emoji.description,
-            'image': url_for('emojis_file', path=emoji.imagefile, _external=True),
+            'image': '' if not emoji.imagefile else url_for('emojis_file', path=emoji.imagefile, _external=True),
             'date_created': emoji.date_created.isoformat(),
             'date_modified': emoji.date_modified.isoformat()
         }
         response_emojis.append(obj_emoji)
 
-    print(response_emojis)
     return build_response.build_json(response_emojis)
 
 
