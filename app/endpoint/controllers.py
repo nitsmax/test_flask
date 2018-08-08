@@ -6,7 +6,7 @@ from jinja2 import Template
 from flask import Blueprint, request, abort
 from app import app
 
-from app.commons.logger import logger
+#from app.commons.logger import logger
 from app.commons import build_response
 from app.users.models import User
 

@@ -1,11 +1,11 @@
-activate_this = '/home/nitesh/work/python_projects/env1/bin/activate_this.py'
+activate_this = '/home/ubuntu/python_projects/venv_web/bin/activate_this.py'
 with open(activate_this) as file_:
     exec(file_.read(), dict(__file__=activate_this))
 
 import sys
 import logging
 logging.basicConfig(stream=sys.stderr)
-sys.path.insert(0,"/var/www/FlaskApp/")
+sys.path.insert(0,"/home/ubuntu/python_projects/test_flask/")
 
-from FlaskApp import app as application
+from app import app as application
 application.secret_key = 'nitesh123#'
