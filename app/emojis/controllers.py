@@ -16,14 +16,14 @@ def get_categories():
     '''
     For inserting the categories
     '''
-    '''categories = ['Bollywood', 'Hollywood', 'Modern']
+    categories = ['Bollywood', 'Hollywood', 'Modern']
     for cat in categories:
         category = Category()
         category.name = cat
         category.save()
 
     return build_response.sent_ok()
-    '''
+    
     categories = Category.objects().order_by('name')
     if not categories:
         return build_response.build_json([])
