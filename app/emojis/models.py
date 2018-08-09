@@ -6,9 +6,6 @@ from mongoengine.fields import ListField,\
 import datetime
 
 
-
-
-
 class LabeledSentences(EmbeddedDocument):
     id = ObjectIdField(required=True, default=lambda: ObjectId())
     data = ListField(required=True)
