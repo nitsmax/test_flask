@@ -140,8 +140,10 @@ def delete_emoji(id):
 
     # remove Image for the deleted emoji
     try:
-        imageDirectory = os.path.join(app.config.get('APP_ROOT'), 'static', 'uploads', 'emojis')
-        os.remove(os.path.join(imageDirectory, emoji.imagefile))
+        if emoji.imagefile:
+            imageDirectory = os.path.join(app.config.get('APP_ROOT'), 'static', 'uploads', 'emojis')
+            os.remove(os.path.join(imageDirectory, emoji.imagefile))
+            
     except OSError:
         pass
 

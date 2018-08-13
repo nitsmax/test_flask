@@ -32,7 +32,7 @@ def save_emoji(emoji):
         tags = [x.strip() for x in tags_string.split(',')]   
         emoji.tags = tags
 
-    if request.form['isPaid'].lower() == 'true':
+    if request.form['isPaid'] == 'Paid':
         emoji.isPaid = True
     else:
         emoji.isPaid = False
@@ -50,9 +50,10 @@ def save_emoji(emoji):
 
 def transpose_emoji(emoji):
 	return {
-        'id': str(emoji.id),
+        '_id': str(emoji.id),
         'name': emoji.name,
-        'isPaid': emoji.isPaid,
+        'isPaid': 'Paid' if emoji.isPaid == True else 'Free',
+        'isPaidB': emoji.isPaid,
         'tags': emoji.tags,
         'category' : emoji.category.name if emoji.category else '',
         'description': emoji.description,
