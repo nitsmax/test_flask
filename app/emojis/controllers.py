@@ -22,7 +22,7 @@ def get_categories():
         category.name = cat
         category.save()
 
-    '''return build_response.sent_ok()
+    return build_response.sent_ok()'''
     
     categories = Category.objects().order_by('name')
     if not categories:
