@@ -42,3 +42,26 @@ def login():
                          app.config['KEY'], algorithm='HS256')
 
     return build_response.build_json({'email': email, 'auth_token': auth_token.decode('utf-8'), 'refresh_token': refresh_token.decode('utf-8')})
+
+@auth.route('/signup', methods=['POST'])
+def signup():
+    """
+    SignUp to user and return a token
+    """
+    user = User()
+
+    content = request.get_json(silent=True)
+
+    email = content.get("email")
+
+    user = User.objects(email=email).first()
+    
+    '''
+    If user exit Update it with latest info
+    '''
+    if user:
+        return build_response.build_json({"error": 'User is not found.'})
+    else:
+        
+
+    
