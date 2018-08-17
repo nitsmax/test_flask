@@ -17,7 +17,7 @@ class User(Document):
     state = StringField(max_length=250)
     city = StringField(max_length=250)
     zipcode = StringField(max_length=20)
-    membershipPlan = ReferenceField(MembershipPlan)
+    #membershipPlan = ReferenceField(MembershipPlan)
     memberShipExpDate = DateTimeField()
     date_created = DateTimeField(default=datetime.datetime.utcnow)
     date_modified = DateTimeField(default=datetime.datetime.utcnow)

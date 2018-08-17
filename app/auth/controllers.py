@@ -62,6 +62,4 @@ def signup():
     if user:
         return build_response.build_json({"error": 'User is not found.'})
     else:
-        
-
-    
+        return []
