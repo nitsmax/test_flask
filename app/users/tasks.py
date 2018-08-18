@@ -1,63 +1,71 @@
 import os
 from flask import request, g, url_for
 from flask import current_app as app
-from app.emojis.models import Emoji, Category
+from app.users.models import User, MembershipPlan
 from werkzeug.utils import secure_filename
+from werkzeug.security import generate_password_hash, check_password_hash
+import datetime
+import jwt
 
-def save_emoji(emoji):
 
-    # check if the post request has the file part
-    if 'Image' in request.files:
-        imageDirectory = os.path.join(app.config.get('APP_ROOT'), 'static', 'uploads', 'emojis')
-        # remove image file if it is update
-        if emoji.imagefile is not None:
-        	try:
-        		os.remove(os.path.join(imageDirectory, emoji.imagefile))
-        	except OSError:
-        		pass
-        	
-        file = request.files['Image']
+def save_user(user):
 
-        filename = secure_filename(file.filename)
-        file.save(os.path.join(imageDirectory, filename))
-        emoji.imagefile = filename
+    content = request.get_json(silent=True)
 
-    if request.form.get("category"):
-        category = Category.objects(name=request.form.get("category")).get()
-        if category:
-            emoji.category = category
+    user.email = content.get("email")
+    user.firstName = content.get("firstName")
+    user.lastName = content.get("lastName")
 
-    if request.form.get("tags"):
-        tags_string = request.form.get("tags")
-        tags = [x.strip() for x in tags_string.split(',')]   
-        emoji.tags = tags
+    if content.get("phoneNumber"):
+        user.phoneNumber = content.get("phoneNumber")
 
-    if request.form['isPaid'] == 'Paid':
-        emoji.isPaid = True
-    else:
-        emoji.isPaid = False
+    if content.get("password"):
+        user.password = generate_password_hash(content.get("password"))
 
-    emoji.name = request.form['name']
+    if content.get("countryCode"):
+        user.countryCode = content.get("countryCode")
 
-    if request.form.get("description"):
-        emoji.description = request.form['description']
+    if content.get("state"):
+        user.state = content.get("state")
 
+    if content.get("city"):
+        user.city = content.get("city")
+
+    if content.get("zipcode"):
+        user.zipcode = content.get("zipcode")
+
+    user.userType = 'User'
+    
+    MembershipP = MembershipPlan.objects(name='Free').get()
+    if MembershipP:
+        user.MembershipPlan = MembershipP
+    
+    print(user.MembershipPlan.name)
     try:
-        emoji_id = emoji.save()
-        return {'emoji_id': str(emoji_id.id)}
+        user_id = user.save()
+        return {'user_id': str(user_id.id)}
     except Exception as e:
-    	return {'error': str(e)}
+        return {'error': str(e)}
 
-def transpose_emoji(emoji):
+def transpose_user(user):
 	return {
-        '_id': str(emoji.id),
-        'name': emoji.name,
-        'isPaid': 'Paid' if emoji.isPaid == True else 'Free',
-        'isPaidB': emoji.isPaid,
-        'tags': emoji.tags,
-        'category' : emoji.category.name if emoji.category else '',
-        'description': emoji.description,
-        'image': '' if not emoji.imagefile else url_for('emojis_file', path=emoji.imagefile, _external=True),
-        'date_created': emoji.date_created.isoformat(),
-        'date_modified': emoji.date_modified.isoformat()
+        '_id': str(user.id),
+        'firstName': user.firstName,
+        'lastName': user.lastName,
+        'fullName': user.firstName+' '+user.lastName,
+        'email': user.email,
+        #'Membership': user.membershipPlan.name,
+        #'memberShipExpDate': user.memberShipExpDate.isoformat(),
+        'date_created': user.date_created.isoformat(),
+        'date_modified': user.date_modified.isoformat()
     }
+
+def create_jwttoken(email):
+    exp = datetime.datetime.utcnow() + datetime.timedelta(hours=app.config['TOKEN_EXPIRE_HOURS'])
+    auth_token = jwt.encode({'email': email, 'exp': exp},
+                         app.config['KEY'], algorithm='HS256')
+
+    refresh_token = jwt.encode({'email': email},
+                         app.config['KEY'], algorithm='HS256')
+
+    return [auth_token, refresh_token]

@@ -4,8 +4,9 @@ from bson.objectid import ObjectId
 from flask import Blueprint, request, Response, g
 from flask import current_app as app
 from app.commons import build_response
-from app.users.models import User
-from app.auth.models import login_required
+from app.users.models import User, MembershipPlan
+from app.auth.models import login_required, admin_required
+from app.users.tasks import transpose_user
 from app.commons.utils import update_document
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
@@ -14,8 +15,52 @@ from werkzeug.utils import secure_filename
 users = Blueprint('users_blueprint', __name__,
                     url_prefix='/api/users')
 
+@users.route('/membershipplans')
+@admin_required
+def get_membershipplans():
+    '''
+    For inserting the categories
+    '''
+
+    '''plans = [['Free','Free Membership. No Amount Charged', 0], ['Monthly','Monthly Amount will be charges',200], ['Annually','Annully Amount will be charges',1000]]
+    for plan in plans:
+        membershipP = MembershipPlan()
+        membershipP.name = plan[0]
+        membershipP.description = plan[1]
+        membershipP.amount = plan[2]
+        membershipP.save()
+
+    return build_response.sent_ok()
+
+    #Get Single Membership
+    MembershipP = MembershipPlan.objects(name='Free').get()
+    print(MembershipP.name)
+    return build_response.sent_ok()
+    '''
+
+    membershipPlans = MembershipPlan.objects().order_by('name')
+    if not membershipPlans:
+        return build_response.build_json([])
+    #return build_response.sent_json(users.to_json())
+
+    response_membershipPlans = []
+
+    for membershipP in membershipPlans:
+        obj_membershipP = {
+            '_id': str(membershipP.id),
+            'name': membershipP.name,
+            'description': membershipP.description,
+            'amount': membershipP.amount,
+            'date_created': membershipP.date_created.isoformat(),
+            'date_modified': membershipP.date_modified.isoformat()
+        }
+        response_membershipPlans.append(obj_membershipP)
+    #return build_response.build_json(membershipPlans)
+    return build_response.sent_json(membershipPlans.to_json())
+
 
 @users.route('', methods=['POST'])
+@admin_required
 def create_user():
     """
     Create a story from the provided json
@@ -60,29 +105,66 @@ def create_user():
 
 
 @users.route('')
-#@login_required
+#@admin_required
 def read_users():
     """
-    find list of intents for the agent
+    find list of users
     :return:
     """
+    '''
     users = User.objects().order_by('lastName')
     return build_response.sent_json(users.to_json())
+    '''
+
+    users = User.objects()
+    if request.args.get('firstName'):
+        users = users.filter(firstName__istartswith=request.args.get('firstName'))
+
+    if request.args.get('lastName'):
+        users = users.filter(lastName__istartswith=request.args.get('lastName'))
+
+    if request.args.get('email'):
+        users = users.filter(email__istartswith=request.args.get('email'))
+
+    if request.args.get('membership'):
+        membershipP = MembershipPlan.objects(name__iexact=request.args.get('membership')).get()
+        users = users.filter(MembershipPlan=membershipP)
+
+
+    if not users:
+        return build_response.build_json([])
+
+    response_users = []
+
+    for user in users:
+        obj_user = transpose_user(user)
+        response_users.append(obj_user)
+
+    return build_response.build_json(response_users)
+
 
 
 @users.route('/<id>')
+@login_required
 def read_user(id):
     """
-    Find details for the given intent id
+    Find details for the given user id
     :param id:
     :return:
     """
-    return Response(response=dumps(
+    '''return Response(response=dumps(
         User.objects.get(
             id=ObjectId(
                 id)).to_mongo().to_dict()),
         status=200,
-        mimetype="application/json")
+        mimetype="application/json")'''
+
+    try:
+        user = User.objects.get(id=ObjectId(id))
+    except Exception as e:
+        return build_response.build_json({"error": str(e)})
+
+    return build_response.build_json(transpose_user(user))
 
 
 @users.route('/<id>', methods=['PUT'])
@@ -101,7 +183,7 @@ def update_user(id):
 
 
 @users.route('/<id>', methods=['DELETE'])
-def delete_intent(id):
+def delete_user(id):
     """
     Delete a intent
     :param id:
@@ -122,55 +204,3 @@ def delete_intent(id):
     return build_response.sent_ok()
 
 
-from flask import send_file
-try:
-    from StringIO import StringIO
-except ImportError:
-    from io import StringIO
-
-
-@users.route('/export', methods=['GET'])
-def export_intents():
-    """
-    Deserialize and export Mongoengines as jsonfile
-    :return:
-    """
-    strIO = StringIO.StringIO()
-    strIO.write(Intent.objects.to_json())
-    strIO.seek(0)
-    return send_file(strIO,
-                     attachment_filename="iky_intents.json",
-                     as_attachment=True)
-
-
-from flask import abort
-from bson.json_util import loads
-
-
-@users.route('/import', methods=['POST'])
-def import_intents():
-    """
-    Convert json files to Intents objects and insert to MongoDB
-    :return:
-    """
-    # check if the post request has the file part
-    if 'file' not in request.files:
-        abort(400, 'No file part')
-    json_file = request.files['file']
-    intents = import_json(json_file)
-
-    return build_response.build_json({"num_intents_created": len(intents)})
-
-
-def import_json(json_file):
-    json_data = json_file.read().decode('utf-8')
-    # intents = Intent.objects.from_json(json_data)
-    intents = loads(json_data)
-
-    creates_intents = []
-    for intent in intents:
-        new_intent = Intent()
-        new_intent = update_document(new_intent, intent)
-        new_intent.save()
-        creates_intents.append(new_intent)
-    return creates_intents

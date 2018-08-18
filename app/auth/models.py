@@ -10,6 +10,11 @@ def login_required(f):
     @functools.wraps(f)
     def wrap(*args, **kwargs):
         header = request.headers.get('Authorization')
+        if not header:
+            return build_response.build_json({"error": 'Authorization header is required'})
+
+
+
         try:
             _, token = header.split()
         except Exception as e:
@@ -30,3 +35,31 @@ def login_required(f):
         return f(*args, **kwargs)
     return wrap
 
+def admin_required(f):
+    @functools.wraps(f)
+    def wrap(*args, **kwargs):
+        header = request.headers.get('Authorization')
+        if not header:
+            return build_response.build_json({"error": 'Authorization header is required'})
+
+        
+
+        try:
+            _, token = header.split()
+        except Exception as e:
+            return build_response.build_json({"error": str(e)})
+
+        try:
+            decoded = jwt.decode(token, app.config['KEY'], algorithms='HS256')
+        except jwt.DecodeError:
+            return build_response.build_json({"error": 'Token is not valid.'})
+        except jwt.ExpiredSignatureError:
+            return build_response.build_json({"error": 'Token is expired.'})
+        email = decoded['email']
+        user = User.objects(email=email).first()
+        if not user:
+            return build_response.build_json({"error": 'User is not found.'})
+
+        g.user = user
+        return f(*args, **kwargs)
+    return wrap
