@@ -16,13 +16,13 @@ users = Blueprint('users_blueprint', __name__,
                     url_prefix='/api/users')
 
 @users.route('/membershipplans')
-#@admin_required
+@admin_required
 def get_membershipplans():
     '''
     For inserting the categories
     '''
 
-    plans = [['Free','Free Membership. No Amount Charged', 0], ['Monthly','Monthly Amount will be charges',200], ['Annually','Annully Amount will be charges',1000]]
+    '''plans = [['Free','Free Membership. No Amount Charged', 0], ['Monthly','Monthly Amount will be charges',200], ['Annually','Annully Amount will be charges',1000]]
     for plan in plans:
         membershipP = MembershipPlan()
         membershipP.name = plan[0]
@@ -32,7 +32,6 @@ def get_membershipplans():
 
     return build_response.sent_ok()
 
-    '''
     #Get Single Membership
     MembershipP = MembershipPlan.objects(name='Free').get()
     print(MembershipP.name)

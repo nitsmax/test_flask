@@ -54,8 +54,8 @@ def transpose_user(user):
         'lastName': user.lastName,
         'fullName': user.firstName+' '+user.lastName,
         'email': user.email,
-        #'Membership': user.membershipPlan.name,
-        #'memberShipExpDate': user.memberShipExpDate.isoformat(),
+        'Membership': user.membershipPlan.name if user.membershipPlan else '',
+        'memberShipExpDate': user.memberShipExpDate.isoformat() if user.memberShipExpDate else '',
         'date_created': user.date_created.isoformat(),
         'date_modified': user.date_modified.isoformat()
     }
