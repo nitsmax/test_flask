@@ -16,7 +16,7 @@ users = Blueprint('users_blueprint', __name__,
                     url_prefix='/api/users')
 
 @users.route('/membershipplans')
-@admin_required
+#@admin_required
 def get_membershipplans():
     '''
     For inserting the categories
@@ -37,25 +37,27 @@ def get_membershipplans():
     print(MembershipP.name)
     return build_response.sent_ok()
     '''
-
+    
     membershipPlans = MembershipPlan.objects().order_by('name')
+    '''
     if not membershipPlans:
         return build_response.build_json([])
     #return build_response.sent_json(users.to_json())
-
+    '''
     response_membershipPlans = []
 
     for membershipP in membershipPlans:
         obj_membershipP = {
             '_id': str(membershipP.id),
             'name': membershipP.name,
-            'description': membershipP.description,
-            'amount': membershipP.amount,
+            #'description': membershipP.description,
+            #'amount': membershipP.amount,
             'date_created': membershipP.date_created.isoformat(),
             'date_modified': membershipP.date_modified.isoformat()
         }
         response_membershipPlans.append(obj_membershipP)
-    #return build_response.build_json(membershipPlans)
+
+    #return build_response.build_json(response_membershipPlans)
     return build_response.sent_json(membershipPlans.to_json())
 
 
@@ -145,7 +147,7 @@ def read_users():
 
 
 @users.route('/<id>')
-@login_required
+#@login_required
 def read_user(id):
     """
     Find details for the given user id

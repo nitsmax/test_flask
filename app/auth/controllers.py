@@ -57,6 +57,6 @@ def signup():
         if 'error' in save_response:
             raise Exception(save_response['error'])
         else:
-            return build_response.build_json({'email': email, 'auth_token': create_jwttoken(email)[1].decode('utf-8')})
+            return build_response.build_json({'_id': save_response['user_id'],'email': email, 'auth_token': create_jwttoken(email)[1].decode('utf-8')})
     except Exception as e:
         return build_response.build_json({"error": str(e)})
