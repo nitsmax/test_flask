@@ -16,7 +16,7 @@ users = Blueprint('users_blueprint', __name__,
                     url_prefix='/api/users')
 
 @users.route('/membershipplans')
-@admin_required
+#@admin_required
 def get_membershipplans():
     '''
     For inserting the categories
