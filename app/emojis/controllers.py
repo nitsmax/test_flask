@@ -5,7 +5,7 @@ from flask import current_app as app
 from app.commons import build_response
 from app.emojis.models import Emoji, Category
 from app.auth.models import login_required
-from app.emojis.tasks import save_emoji, transpose_emoji
+from app.emojis.tasks import save_emoji, transpose_emoji, emoji_download
 
 
 emojis = Blueprint('emojis_blueprint', __name__,
@@ -149,3 +149,19 @@ def delete_emoji(id):
 
     emoji.delete()
     return build_response.sent_ok()
+
+@emojis.route('/user-emoji-download', methods=['POST'])
+def user_emoji_download():
+    """
+    user download a emoji
+    """
+    try:
+        save_response = emoji_download()
+        if 'error' in save_response:
+            raise Exception(save_response['error'])
+        else:
+            return build_response.build_json({
+                "_id": str(save_response['emoji_download_id'])
+            })
+    except Exception as e:
+        return build_response.build_json({"error": str(e)})

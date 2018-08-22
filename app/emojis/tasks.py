@@ -1,8 +1,10 @@
 import os
 from flask import request, g, url_for
 from flask import current_app as app
-from app.emojis.models import Emoji, Category
+from app.emojis.models import Emoji, Category, EmojiDownloads
+from app.users.models import User
 from werkzeug.utils import secure_filename
+from bson.objectid import ObjectId
 
 def save_emoji(emoji):
 
@@ -61,3 +63,26 @@ def transpose_emoji(emoji):
         'date_created': emoji.date_created.isoformat(),
         'date_modified': emoji.date_modified.isoformat()
     }
+
+def emoji_download():
+    content = request.get_json(silent=True)
+
+    emoji_id = content.get("emoji_id")
+    user_id = content.get("user_id")
+
+    
+    emoji = Emoji.objects.get(id=ObjectId(emoji_id))
+    user = User.objects.get(id=ObjectId(user_id))
+
+    if emoji and user:
+        emojiDownloads = EmojiDownloads()
+        emojiDownloads.user = user
+        emojiDownloads.emoji = emoji
+
+        try:
+            emoji_download_id = emojiDownloads.save()
+            return {'emoji_download_id': str(emoji_download_id.id)}
+        except Exception as e:
+            return {'error': str(e)}
+    else:
+        return {'emoji_download_id': ''}
