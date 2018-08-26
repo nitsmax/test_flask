@@ -95,6 +95,48 @@ def read_emojis():
     return build_response.build_json(response_emojis)
 
 
+@emojis.route('/findemojis')
+#@login_required
+def find_emojis():
+    """
+    find list of emojis for the agent
+    :return:
+    """
+    page_nb = int(request.args.get('pageNumber'))
+
+    items_per_page = int(request.args.get('pageSize'))
+
+    offset = (page_nb - 1) * items_per_page if page_nb > 0 else 0
+
+    emojis = Emoji.objects()
+    if request.args.get('name'):
+        emojis = emojis.filter(name__iexact=request.args.get('name'))
+
+    if request.args.get('category'):
+        category = Category.objects(name__iexact=request.args.get('category')).get()
+        emojis = emojis.filter(category=category)
+
+    if request.args.get('q'):
+        emojis = emojis.filter(tags__icontains=request.args.get('q'))
+
+    if request.args.get('isPaid'):
+        emojis = emojis.filter(isPaid=True) if request.args.get('isPaid').lower() == 'true' else emojis.filter(isPaid=False)
+
+
+    if not emojis:
+        return build_response.build_json([])
+
+    emojis = emojis.order_by('-date_modified')
+    #emojis = skip( offset ).limit( items_per_page )
+
+    response_emojis = []
+
+    for emoji in emojis:
+        obj_emoji = transpose_emoji(emoji)
+        response_emojis.append(obj_emoji)
+
+    return build_response.build_json({"payload":response_emojis})
+
 @emojis.route('/<id>')
 def read_emoji(id):
     """
