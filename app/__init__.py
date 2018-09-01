@@ -32,6 +32,10 @@ my_signals = Namespace()
 def emojis_file(path):
 	return send_from_directory('static/uploads/emojis', path)
 
+@app.route('/uploads/categories/<path:path>')
+def categories_file(path):
+	return send_from_directory('static/uploads/categories', path)
+
 @app.errorhandler(404)
 def not_found(error):
     return "Not found", 404
@@ -43,6 +47,7 @@ def get():
 from app.auth.controllers import auth
 from app.users.controllers import users
 from app.emojis.controllers import emojis
+from app.categories.controllers import categories
 #from app.nlu.controllers import nlu
 #from app.intents.controllers import intents
 #from app.train.controllers import train
@@ -52,6 +57,7 @@ from app.endpoint.controllers import endpoint
 app.register_blueprint(auth)
 app.register_blueprint(users)
 app.register_blueprint(emojis)
+app.register_blueprint(categories)
 #app.register_blueprint(intents)
 #app.register_blueprint(train)
 app.register_blueprint(endpoint)
