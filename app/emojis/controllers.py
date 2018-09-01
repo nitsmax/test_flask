@@ -3,7 +3,8 @@ from bson.objectid import ObjectId
 from flask import Blueprint, request, Response, g
 from flask import current_app as app
 from app.commons import build_response
-from app.emojis.models import Emoji, Category
+from app.emojis.models import Emoji
+from app.categories.models import Category
 from app.auth.models import login_required
 from app.emojis.tasks import save_emoji, transpose_emoji, emoji_download
 

@@ -5,11 +5,7 @@ from mongoengine.fields import ListField,\
     BooleanField, Document, DateTimeField, ReferenceField
 import datetime
 from app.users.models import User
-
-class Category(Document):
-    name = StringField(max_length=255, required=True, unique=True)
-    date_created = DateTimeField(default=datetime.datetime.utcnow)
-    date_modified = DateTimeField(default=datetime.datetime.utcnow)
+from app.categories.models import Category
 
 class Emoji(Document):
     name = StringField(max_length=255, required=True)

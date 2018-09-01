@@ -1,7 +1,8 @@
 import os
 from flask import request, g, url_for
 from flask import current_app as app
-from app.emojis.models import Emoji, Category, EmojiDownloads
+from app.emojis.models import Emoji, EmojiDownloads
+from app.categories.models import Category
 from app.users.models import User
 from werkzeug.utils import secure_filename
 from bson.objectid import ObjectId
