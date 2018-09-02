@@ -20,6 +20,7 @@ def save_user(user):
         
     signupType = content.get("signupType")    
     user.signupType = signupType
+    user.status = 1
 
     if content.get("email"):
         user.email = content.get("email")
