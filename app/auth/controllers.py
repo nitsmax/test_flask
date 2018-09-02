@@ -28,12 +28,12 @@ def login():
     user = User.objects(email=email).first()
     
     if not user:
-        return build_response.build_json({"error": 'User is not found.'})
+        return build_response.build_json({"status":False, "error": 'User is not found.'})
     
     if not check_password_hash(user.password, password):
-        return build_response.build_json({"error": 'Password is incorrect.'})
+        return build_response.build_json({"status":False, "error": 'Password is incorrect.'})
 
-    return build_response.build_json({'auth_token': create_jwttoken(1,email)[1].decode('utf-8')})
+    return build_response.build_json({'status':True, 'auth_token': create_jwttoken(1,email)[1].decode('utf-8')})
 
 @auth.route('/signup', methods=['POST'])
 def signup():
@@ -43,10 +43,10 @@ def signup():
     content = request.get_json(silent=True)
 
     if not content.get("signupType"):
-        return build_response.build_json({"error": 'SignUp Type is missing.'})
+        return build_response.build_json({"status":False, "error": 'SignUp Type is missing.'})
 
     if content.get("signupType") != 1:
-        return build_response.build_json({"error": 'SignUp Type is wrong.'})
+        return build_response.build_json({"status":False, "error": 'SignUp Type is wrong.'})
 
     email = content.get("email")
 
@@ -58,7 +58,7 @@ def signup():
     if not user:
         user = User()
     else:
-        return build_response.build_json({"error": 'Email already exist.'})
+        return build_response.build_json({"status":False, "error": 'Email already exist.'})
 
 
     try:
@@ -66,9 +66,9 @@ def signup():
         if 'error' in save_response:
             raise Exception(save_response['error'])
         else:
-            return build_response.build_json({'auth_token': create_jwttoken(1,email)[1].decode('utf-8')})
+            return build_response.build_json({'status':True, 'auth_token': create_jwttoken(1,email)[1].decode('utf-8')})
     except Exception as e:
-        return build_response.build_json({"error": str(e)})
+        return build_response.build_json({"status":False, "error": str(e)})
 
 @auth.route('/socialsignup', methods=['POST'])
 def soical_signup():
@@ -79,11 +79,11 @@ def soical_signup():
 
     #Signup Type and Social Id is required
     if not (content.get("socialId") or content.get("signupType")):
-        return build_response.build_json({"error": 'Social Id or SignUp Type is missing.'})
+        return build_response.build_json({"status":False, "error": 'Social Id or SignUp Type is missing.'})
 
     #check for valid signup type value
     if content.get("signupType") not in [2,3,4,5]:
-        return build_response.build_json({"error": 'SignUp Type is not a valid value.'})
+        return build_response.build_json({"status":False, "error": 'SignUp Type is not a valid value.'})
 
     
     signupType = content.get("signupType")
@@ -110,7 +110,7 @@ def soical_signup():
         #No address info not provided
         #return the response and ask for address info along with all signup info
         if not (content.get("countryCode") and content.get("state")):
-            return build_response.build_json({"error": 'Country code and State are required.'})
+            return build_response.build_json({"status":False, "error": 'Country code and State are required.'})
         else:
             #Register new user return the token
             user = User()
@@ -119,7 +119,7 @@ def soical_signup():
         if 'error' in save_response:
             raise Exception(save_response['error'])
         else:
-            return build_response.build_json({'auth_token': create_jwttoken(signupType,socialId)[1].decode('utf-8')})
-            return build_response.build_json({'_id': save_response['user_id'],'email': email, 'auth_token': create_jwttoken(email)[1].decode('utf-8')})
+            return build_response.build_json({'status':True, 'auth_token': create_jwttoken(signupType,socialId)[1].decode('utf-8')})
+            return build_response.build_json({'_id': save_response['user_id'],'email': email, 'status':True, 'auth_token': create_jwttoken(email)[1].decode('utf-8')})
     except Exception as e:
-        return build_response.build_json({"error": str(e)})
+        return build_response.build_json({"status":False, "error": str(e)})
