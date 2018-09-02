@@ -12,9 +12,20 @@ def save_user(user):
 
     content = request.get_json(silent=True)
 
-    user.email = content.get("email")
-    user.firstName = content.get("firstName")
-    user.lastName = content.get("lastName")
+    #existing user not update the data
+    if not user.id:
+        user.firstName = content.get("firstName")
+        user.countryCode = content.get("countryCode")
+        user.state = content.get("state")
+        
+    signupType = content.get("signupType")    
+    user.signupType = signupType
+
+    if content.get("email"):
+        user.email = content.get("email")
+
+    if content.get("lastName"):
+        user.lastName = content.get("lastName")
 
     if content.get("phoneNumber"):
         user.phoneNumber = content.get("phoneNumber")
@@ -22,17 +33,24 @@ def save_user(user):
     if content.get("password"):
         user.password = generate_password_hash(content.get("password"))
 
-    if content.get("countryCode"):
-        user.countryCode = content.get("countryCode")
-
-    if content.get("state"):
-        user.state = content.get("state")
-
     if content.get("city"):
         user.city = content.get("city")
 
     if content.get("zipcode"):
         user.zipcode = content.get("zipcode")
+
+    if content.get("socialId") and signupType != 1:
+        socialId = content.get("socialId")
+
+        if signupType == 2:
+            user.facebookId = socialId
+        elif signupType == 3:
+            user.twitterId = socialId
+        elif signupType == 4:
+            user.googleId = socialId
+        elif signupType == 5:
+            user.snapchatId = socialId
+
 
     user.userType = 'User'
     
@@ -60,12 +78,32 @@ def transpose_user(user):
         'date_modified': user.date_modified.isoformat()
     }
 
-def create_jwttoken(email):
+def create_jwttoken(signupType,fieldValue):
+    if signupType == 2:
+        field = 'facebookId'
+    elif signupType == 3:
+        field = 'twitterId'
+    elif signupType == 4:
+        field = 'googleId'
+    elif signupType == 5:
+        field = 'snapchatId'
+    else:
+        field = 'email'
     exp = datetime.datetime.utcnow() + datetime.timedelta(hours=app.config['TOKEN_EXPIRE_HOURS'])
-    auth_token = jwt.encode({'email': email, 'exp': exp},
+    auth_token = jwt.encode({field: fieldValue, 'exp': exp},
                          app.config['KEY'], algorithm='HS256')
 
-    refresh_token = jwt.encode({'email': email},
+    refresh_token = jwt.encode({field: fieldValue},
                          app.config['KEY'], algorithm='HS256')
 
     return [auth_token, refresh_token]
+
+def getUserBySoicalId(signupType, socialId):
+    if signupType == 2:
+        return User.objects(facebookId=socialId).first()
+    elif signupType == 3:
+        return User.objects(twitterId=socialId).first()
+    elif signupType == 4:
+        return User.objects(googleId=socialId).first()
+    elif signupType == 5:
+        return User.objects(snapchatId=socialId).first()

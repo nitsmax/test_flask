@@ -26,10 +26,19 @@ def login_required(f):
             return build_response.build_json({"error": 'Token is not valid.'})
         except jwt.ExpiredSignatureError:
             return build_response.build_json({"error": 'Token is expired.'})
-        email = decoded['email']
-        user = User.objects(email=email).first()
-        if not user:
-            return build_response.build_json({"error": 'User is not found.'})
+
+        if 'email' in decoded:
+            user = User.objects(email=decoded['email']).first()
+        elif 'facebookId' in decoded:
+            user = User.objects(facebookId=decoded['facebookId']).first()
+        elif 'twitterId' in decoded:
+            user = User.objects(twitterId=decoded['twitterId']).first()
+        elif 'googleId' in decoded:
+            user = User.objects(googleId=decoded['googleId']).first()
+        elif 'snapchatId' in decoded:
+            user = User.objects(snapchatId=decoded['snapchatId']).first()
+        else:
+            return build_response.build_json({"error": 'Token is expired.'})
 
         g.user = user
         return f(*args, **kwargs)
