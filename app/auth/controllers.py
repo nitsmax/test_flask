@@ -97,6 +97,10 @@ def soical_signup():
         user
     except NameError:
         user = getUserBySoicalId(signupType, socialId)
+    else:
+        if not user:
+            user = getUserBySoicalId(signupType, socialId)
+
         
     #If no user exist, try to register as new
     if not user:
