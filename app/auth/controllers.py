@@ -45,6 +45,9 @@ def signup():
     if not content.get("signupType"):
         return build_response.build_json({"error": 'SignUp Type is missing.'})
 
+    if content.get("signupType") != 1:
+        return build_response.build_json({"error": 'SignUp Type is wrong.'})
+
     email = content.get("email")
 
     user = User.objects(email=email).first()
