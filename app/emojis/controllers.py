@@ -96,6 +96,32 @@ def read_emojis():
     return build_response.build_json(response_emojis)
 
 
+@emojis.route('/stickers')
+#@login_required
+def stickers():
+    """
+    return list  of stikers grouped by category
+    :return:
+    """
+    strikers = []
+    categories = Category.objects(status=1).order_by('displayOrder')
+
+    for category in categories:
+        emojis = Emoji.objects()
+        emojis = emojis.filter(category=category)
+
+        if request.args.get('q'):
+            emojis = emojis.filter(tags__icontains=request.args.get('q'))
+
+        emojis_list = []
+        for emoji in emojis:
+            obj_emoji = transpose_emoji(emoji)
+            emojis_list.append(obj_emoji)
+
+        strikers.append({"category_name": category.name, 'stickers': emojis_list})
+
+    return build_response.build_json({'status': True, 'result': strikers})
+
 @emojis.route('/findemojis')
 #@login_required
 def find_emojis():
@@ -137,6 +163,7 @@ def find_emojis():
         response_emojis.append(obj_emoji)
 
     return build_response.build_json({"payload":response_emojis})
+
 
 @emojis.route('/<id>')
 def read_emoji(id):
