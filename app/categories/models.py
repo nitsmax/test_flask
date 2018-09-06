@@ -9,5 +9,6 @@ class Category(Document):
     name = StringField(max_length=255, required=True, unique=True)
     imagefile = StringField(max_length=255)
     status = IntField()
+    displayOrder = IntField()
     date_created = DateTimeField(default=datetime.datetime.utcnow)
     date_modified = DateTimeField(default=datetime.datetime.utcnow)

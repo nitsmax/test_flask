@@ -23,7 +23,8 @@ def save_category(category):
         file.save(os.path.join(imageDirectory, filename))
         category.imagefile = filename
 
-    category.name = request.form['name']
+    category.name = request.form['displayOrder']
+    category.displayOrder = request.form['displayOrder']
     category.status = 2 if request.form['status'] == 'Inactive' else 1
 
     try:
