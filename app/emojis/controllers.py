@@ -1,6 +1,6 @@
 import os
 from bson.objectid import ObjectId
-from flask import Blueprint, request, Response, g
+from flask import Blueprint, request, Response, g, url_for
 from flask import current_app as app
 from app.commons import build_response
 from app.emojis.models import Emoji
@@ -118,7 +118,12 @@ def stickers():
             obj_emoji = transpose_emoji(emoji)
             emojis_list.append(obj_emoji)
 
-        strikers.append({"category_name": category.name, 'stickers': emojis_list})
+        categoryD = {
+            'name':category.name,
+            'icon': url_for('categories_file', path=category.imagefile, _external=True)
+        }
+
+        strikers.append({"category": categoryD, 'stickers': emojis_list})
 
     return build_response.build_json({'status': True, 'result': strikers})
 
