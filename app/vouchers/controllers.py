@@ -5,18 +5,16 @@ from flask import current_app as app
 from app.commons import build_response
 from app.vouchers.models import Voucher
 from app.auth.models import login_required, admin_required
-from app.voucher.tasks import transpose_voucher
+from app.voucher.tasks import transpose_voucher,save_voucher
 from app.commons.utils import update_document
-from werkzeug.security import generate_password_hash, check_password_hash
-from werkzeug.utils import secure_filename
 
 
 vouchers = Blueprint('vouchers_blueprint', __name__,
                     url_prefix='/api/vouchers')
 
-@vouchers.route('/membershipplans')
+@vouchers.route('/vouchers')
 #@admin_required
-def get_membershipplans():
+def get_vouchers():
     '''
     For inserting the categories
     '''
@@ -68,42 +66,17 @@ def create_voucher():
     :param json:
     :return:
     """
-    voucher = User()
-
-    # check if the post request has the file part
-    if 'Image' in request.files:
-        print(request.files)
-        file = request.files['Image']
-        filename = secure_filename(file.filename)
-        print(filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        voucher.imagefile = filename
-
-    
-    voucher.firstName = request.form['firstName']
-    voucher.lastName = request.form['lastName']
-    voucher.email = request.form['email']
-    voucher.password = generate_password_hash(request.form['password'])
-
-    '''
-    content = request.get_json(silent=True)
-
-    voucher = User()
-    voucher.firstName = content.get("firstName")
-    voucher.lastName = content.get("lastName")
-    voucher.email = content.get("email")
-    voucher.password = generate_password_hash(content.get("password"))
-    '''
-    
+    voucher = Voucher()
     try:
-        voucher_id = voucher.save()
+        save_response = save_voucher(voucher)
+        if 'error' in save_response:
+            raise Exception(save_response['error'])
+        else:
+            return build_response.build_json({
+                "_id": str(save_response['emoji_id'])
+            })
     except Exception as e:
         return build_response.build_json({"error": str(e)})
-
-    return build_response.build_json({
-        "_id": str(voucher_id.id)
-    })
-
 
 @vouchers.route('')
 #@admin_required
