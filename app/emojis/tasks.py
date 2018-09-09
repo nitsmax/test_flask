@@ -59,7 +59,7 @@ def transpose_emoji(emoji):
         'isPaidB': emoji.isPaid,
         'tags': emoji.tags,
         'category' : emoji.category.name if emoji.category else '',
-        'description': emoji.description,
+        'description': emoji.description if emoji.description else '',
         'image': '' if not emoji.imagefile else url_for('emojis_file', path=emoji.imagefile, _external=True),
         'date_created': emoji.date_created.isoformat(),
         'date_modified': emoji.date_modified.isoformat()

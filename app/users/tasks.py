@@ -20,7 +20,6 @@ def save_user(user):
         
     signupType = content.get("signupType")    
     user.signupType = signupType
-    user.status = 1
 
     if content.get("email"):
         user.email = content.get("email")
@@ -52,14 +51,6 @@ def save_user(user):
         elif signupType == 5:
             user.snapchatId = socialId
 
-
-    user.userType = 'User'
-    
-    MembershipP = MembershipPlan.objects(name='Free').get()
-    if MembershipP:
-        user.MembershipPlan = MembershipP
-    
-    print(user.MembershipPlan.name)
     try:
         user_id = user.save()
         return {'user_id': str(user_id.id)}
