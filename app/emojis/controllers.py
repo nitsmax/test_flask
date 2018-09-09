@@ -124,7 +124,7 @@ def stickers():
             'stickers': emojis_list
         }
 
-        strikers.append({"category": categoryD})
+        strikers.append({category.name: categoryD})
 
     return build_response.build_json({'status': True, 'result': strikers})
 
