@@ -120,10 +120,11 @@ def stickers():
 
         categoryD = {
             'name':category.name,
-            'icon': url_for('categories_file', path=category.imagefile, _external=True)
+            'icon': url_for('categories_file', path=category.imagefile, _external=True),
+            'stickers': emojis_list
         }
 
-        strikers.append({"category": categoryD, 'stickers': emojis_list})
+        strikers.append({"category": categoryD})
 
     return build_response.build_json({'status': True, 'result': strikers})
 
