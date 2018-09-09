@@ -20,14 +20,14 @@ class User(Document):
     phoneNumber = StringField(max_length=12)
     password = StringField(max_length=255)
     imagefile = StringField(max_length=255)
-    userType = StringField(required=True)
+    userType = StringField(required=True,default='User')
     countryCode = StringField(max_length=3, required=True)
     state = StringField(max_length=250, required=True)
     city = StringField(max_length=250)
     zipcode = StringField(max_length=20)
-    membershipPlan = ReferenceField(MembershipPlan)
+    membershipPlan = IntField(default=0) # 0:Free,1: Paid
     memberShipExpDate = DateTimeField()
-    status = IntField() # 1:Active, 2: Not varified, 3: Inactive, 4: Deleted
+    status = IntField(default=1) # 1:Active, 2: Not varified, 3: Inactive, 4: Deleted
     signupType = IntField() # 1:Email, 2: Facebook, 3: Twitter, 4: Google, 5: Snapchat
     facebookId = StringField(max_length=100)
     twitterId = StringField(max_length=100)

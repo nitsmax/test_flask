@@ -33,6 +33,13 @@ def login():
     if not check_password_hash(user.password, password):
         return build_response.build_json({"status":False, "error": 'Password is incorrect.'})
 
+    return build_response.build_json(
+        {
+            'status':True,
+            'membership': 'Free' if user.membershipPlan == 0 else 'Paid',
+            'auth_token': create_jwttoken(1,user.email)[1].decode('utf-8')
+        }
+    )
     return build_response.build_json({'status':True, 'auth_token': create_jwttoken(1,email)[1].decode('utf-8')})
 
 @auth.route('/signup', methods=['POST'])
@@ -66,7 +73,14 @@ def signup():
         if 'error' in save_response:
             raise Exception(save_response['error'])
         else:
-            return build_response.build_json({'status':True, 'auth_token': create_jwttoken(1,email)[1].decode('utf-8')})
+            user = User.objects.get(id=ObjectId(save_response['user_id']))
+            return build_response.build_json(
+                {
+                    'status':True,
+                    'membership': 'Free' if user.membershipPlan == 0 else 'Paid',
+                    'auth_token': create_jwttoken(1,user.email)[1].decode('utf-8')
+                }
+            )
     except Exception as e:
         return build_response.build_json({"status":False, "error": str(e)})
 
@@ -119,7 +133,12 @@ def soical_signup():
         if 'error' in save_response:
             raise Exception(save_response['error'])
         else:
-            return build_response.build_json({'status':True, 'auth_token': create_jwttoken(signupType,socialId)[1].decode('utf-8')})
-            return build_response.build_json({'_id': save_response['user_id'],'email': email, 'status':True, 'auth_token': create_jwttoken(email)[1].decode('utf-8')})
+            return build_response.build_json(
+                {
+                    'status':True,
+                    'membership': 'Free' if user.membershipPlan == 0 else 'Paid',
+                    'auth_token': create_jwttoken(signupType,socialId)[1].decode('utf-8')
+                }
+            )
     except Exception as e:
         return build_response.build_json({"status":False, "error": str(e)})
