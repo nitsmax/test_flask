@@ -10,10 +10,10 @@ import jwt
 
 
 def save_voucher(voucher):
-    print("here")
 
     voucher.name = request.form['name']
     voucher.code = request.form['code']
+    voucher.discount = request.form['discount']
 
     if request.form.get("uselimit"):
         voucher.uselimit = request.form['uselimit']
@@ -24,8 +24,15 @@ def save_voucher(voucher):
     if request.form.get("expireDate"):
         voucher.expireDate = request.form['expireDate']
 
+    if request.form.get("membershipPlan"):
+        country = Country.objects(id=request.form.get("membershipPlan")).get()
+        if country:
+            voucher.membershipPlan = [country]
+
+
+    '''
+    #Multi Member ship
     if request.form.getlist("membershipPlans"):
-        print(request.form.getlist("membershipPlans"))
 
         membershipPlans = []
 
@@ -34,16 +41,11 @@ def save_voucher(voucher):
             
             if country:
                 membershipPlans.append(country)
-
-        print(membershipPlans)
         
         voucher.membershipPlan = membershipPlans
 
     '''
-    MembershipP = MembershipPlan.objects(name=request.form['membershipPlan']).get()
-    if MembershipP:
-        voucher.MembershipPlan = MembershipP
-    '''
+
     try:
         voucher_id = voucher.save()
         return {'voucher_id': str(voucher_id.id)}
@@ -55,6 +57,7 @@ def transpose_voucher(voucher):
         '_id': str(voucher.id),
         'name': voucher.name,
         'code': voucher.code,
+        'discount': float(voucher.discount),
         'uselimit': voucher.uselimit,
         'description': voucher.description if voucher.description else '',
         'usedNum': voucher.usedNum,

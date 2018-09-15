@@ -35,6 +35,24 @@ def create_country():
         return build_response.build_json({"error": str(e)})
 
 
+@countries.route('')
+def read_countries():
+    """
+    find list of categories for the agent
+    :return:
+    """
+    countries = Country.objects.order_by('displayOrder','CountryName')
+    if not countries:
+        return build_response.build_json([])
+
+    response_countries = []
+
+    for country in countries:
+        obj_country = transpose_country(country)
+        response_countries.append(obj_country)
+
+    return build_response.build_json(response_countries)
+
 #@login_required
 @countries.route('/findcountries')
 def find_countries():
@@ -50,13 +68,13 @@ def find_countries():
 
     countries = Country.objects()
     
-    if request.args.get('CountryName'):
-        countries = countries.filter(CountryName__iexact=request.args.get('CountryName'))
+    if request.args.get('name'):
+        countries = countries.filter(CountryName__iexact=request.args.get('name'))
 
     if not countries:
         return build_response.build_json([])
 
-    #countries = countries.order_by('displyOrder')
+    countries = countries.order_by('displayOrder','CountryName')
     #countries = skip( offset ).limit( items_per_page )
 
     response_countries = []

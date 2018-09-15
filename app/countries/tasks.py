@@ -32,7 +32,7 @@ def transpose_country(country):
         'countryName': country.CountryName,
         'countryCode': country.CountryCode,
         'countryCurrency': country.countryCurrency,
-        'monthlyAmount': str(country.monthlyAmount),
+        'monthlyAmount': float(country.monthlyAmount),
         'displayOrder': country.displayOrder,
         'date_created': country.date_created.isoformat() if country.date_created else '',
         'date_modified': country.date_modified.isoformat() if country.date_modified else ''
