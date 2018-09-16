@@ -5,8 +5,8 @@ from flask import Blueprint, request, Response, g
 from flask import current_app as app
 from app.commons import build_response
 from app.users.models import User
-from app.auth.models import login_required, admin_required
-from app.users.tasks import save_user, transpose_user, create_jwttoken,getUserBySoicalId
+from app.auth.models import login_required, admin_required,create_jwttoken
+from app.users.tasks import save_user, transpose_user,getUserBySoicalId
 from app.commons.utils import update_document
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -38,10 +38,9 @@ def login():
         {
             'status':True,
             'membership': 'Free' if user.membershipPlan == 0 else 'Paid',
-            'auth_token': create_jwttoken(1,user.email)[1].decode('utf-8')
+            'auth_token': create_jwttoken(1,user.email)[1]
         }
     )
-    return build_response.build_json({'status':True, 'auth_token': create_jwttoken(1,email)[1].decode('utf-8')})
 
 @auth.route('/signup', methods=['POST'])
 def signup():
@@ -79,7 +78,7 @@ def signup():
                 {
                     'status':True,
                     'membership': 'Free' if user.membershipPlan == 0 else 'Paid',
-                    'auth_token': create_jwttoken(1,user.email)[1].decode('utf-8')
+                    'auth_token': create_jwttoken(1,user.email)[1]
                 }
             )
     except Exception as e:
@@ -138,7 +137,7 @@ def soical_signup():
                 {
                     'status':True,
                     'membership': 'Free' if user.membershipPlan == 0 else 'Paid',
-                    'auth_token': create_jwttoken(signupType,socialId)[1].decode('utf-8')
+                    'auth_token': create_jwttoken(signupType,socialId)[1]
                 }
             )
     except Exception as e:
@@ -176,7 +175,7 @@ def update_profile():
             {
                 'status':True,
                 'membership': 'Free' if user.membershipPlan == 0 else 'Paid',
-                'auth_token': create_jwttoken(1,user.email)[1].decode('utf-8')
+                'auth_token': create_jwttoken(1,user.email)[1]
             }
         )
     except Exception as e:

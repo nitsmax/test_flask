@@ -4,7 +4,8 @@ from app.commons import build_response
 from flask import request, g
 import functools
 import jwt
-
+import base64
+import datetime
 
 def login_required(f):
     @functools.wraps(f)
@@ -21,8 +22,8 @@ def login_required(f):
             return build_response.build_json({"error": str(e)})
 
         try:
-            decoded = jwt.decode(token, app.config['KEY'], algorithms='HS256')
-        except jwt.DecodeError:
+            decoded = jwt.decode(base64.b64decode(token), app.config['KEY'], algorithms='HS256')
+        except jwt.DecodeError as e:
             return build_response.build_json({"error": 'Token is not valid.'})
         except jwt.ExpiredSignatureError:
             return build_response.build_json({"error": 'Token is expired.'})
@@ -44,7 +45,7 @@ def login_required(f):
             return build_response.build_json({"error": 'Token is not valid.'})
         else:
             g.user = user
-            
+
         return f(*args, **kwargs)
     return wrap
 
@@ -76,3 +77,23 @@ def admin_required(f):
         g.user = user
         return f(*args, **kwargs)
     return wrap
+
+def create_jwttoken(signupType,fieldValue):
+    if signupType == 2:
+        field = 'facebookId'
+    elif signupType == 3:
+        field = 'twitterId'
+    elif signupType == 4:
+        field = 'googleId'
+    elif signupType == 5:
+        field = 'snapchatId'
+    else:
+        field = 'email'
+    exp = datetime.datetime.utcnow() + datetime.timedelta(hours=app.config['TOKEN_EXPIRE_HOURS'])
+    auth_token = jwt.encode({field: fieldValue, 'exp': exp},
+                         app.config['KEY'], algorithm='HS256')
+
+    refresh_token = jwt.encode({field: fieldValue},
+                         app.config['KEY'], algorithm='HS256')
+
+    return [base64.b64encode(auth_token).decode('utf-8'), base64.b64encode(refresh_token).decode('utf-8')]

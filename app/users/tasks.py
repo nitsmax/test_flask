@@ -7,6 +7,7 @@ from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
 import datetime
 import jwt
+import base64
 
 
 def save_user(user):
@@ -75,26 +76,6 @@ def transpose_user(user):
         'date_created': user.date_created.isoformat(),
         'date_modified': user.date_modified.isoformat()
     }
-
-def create_jwttoken(signupType,fieldValue):
-    if signupType == 2:
-        field = 'facebookId'
-    elif signupType == 3:
-        field = 'twitterId'
-    elif signupType == 4:
-        field = 'googleId'
-    elif signupType == 5:
-        field = 'snapchatId'
-    else:
-        field = 'email'
-    exp = datetime.datetime.utcnow() + datetime.timedelta(hours=app.config['TOKEN_EXPIRE_HOURS'])
-    auth_token = jwt.encode({field: fieldValue, 'exp': exp},
-                         app.config['KEY'], algorithm='HS256')
-
-    refresh_token = jwt.encode({field: fieldValue},
-                         app.config['KEY'], algorithm='HS256')
-
-    return [auth_token, refresh_token]
 
 def getUserBySoicalId(signupType, socialId):
     if signupType == 2:
