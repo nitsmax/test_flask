@@ -48,6 +48,7 @@ from app.auth.controllers import auth
 from app.users.controllers import users
 from app.emojis.controllers import emojis
 from app.categories.controllers import categories
+from app.payment.controllers import payment
 #from app.nlu.controllers import nlu
 #from app.intents.controllers import intents
 #from app.train.controllers import train
@@ -58,6 +59,7 @@ app.register_blueprint(auth)
 app.register_blueprint(users)
 app.register_blueprint(emojis)
 app.register_blueprint(categories)
+app.register_blueprint(payment)
 #app.register_blueprint(intents)
 #app.register_blueprint(train)
 app.register_blueprint(endpoint)
