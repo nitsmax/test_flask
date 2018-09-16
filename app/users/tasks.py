@@ -1,7 +1,8 @@
 import os
 from flask import request, g, url_for
 from flask import current_app as app
-from app.users.models import User, MembershipPlan
+from app.users.models import User
+from app.countries.models import Country
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
 import datetime
@@ -16,6 +17,9 @@ def save_user(user):
     if not user.id:
         user.firstName = content.get("firstName")
         user.countryCode = content.get("countryCode")
+        country = Country.objects(CountryCode=content.get("countryCode")).get()
+        if country:
+            user.country = country
         user.state = content.get("state")
         
     signupType = content.get("signupType")    
@@ -64,7 +68,9 @@ def transpose_user(user):
         'lastName': user.lastName,
         'fullName': user.firstName+' '+user.lastName,
         'email': user.email,
-        'Membership': user.membershipPlan.name if user.membershipPlan else '',
+        'country': user.country.CountryName if user.country else '',
+        'state': user.state,
+        'membershipPlan': user.membershipPlan,
         'memberShipExpDate': user.memberShipExpDate.isoformat() if user.memberShipExpDate else '',
         'date_created': user.date_created.isoformat(),
         'date_modified': user.date_modified.isoformat()

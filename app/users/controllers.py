@@ -4,7 +4,8 @@ from bson.objectid import ObjectId
 from flask import Blueprint, request, Response, g
 from flask import current_app as app
 from app.commons import build_response
-from app.users.models import User, MembershipPlan
+from app.users.models import User
+from app.countries.models import Country
 from app.auth.models import login_required, admin_required
 from app.users.tasks import transpose_user
 from app.commons.utils import update_document
@@ -14,52 +15,6 @@ from werkzeug.utils import secure_filename
 
 users = Blueprint('users_blueprint', __name__,
                     url_prefix='/api/users')
-
-@users.route('/membershipplans')
-#@admin_required
-def get_membershipplans():
-    '''
-    For inserting the categories
-    '''
-
-    '''plans = [['Free','Free Membership. No Amount Charged', 0], ['Monthly','Monthly Amount will be charges',200], ['Annually','Annully Amount will be charges',1000]]
-    for plan in plans:
-        membershipP = MembershipPlan()
-        membershipP.name = plan[0]
-        membershipP.description = plan[1]
-        membershipP.amount = plan[2]
-        membershipP.save()
-
-    return build_response.sent_ok()
-
-    #Get Single Membership
-    MembershipP = MembershipPlan.objects(name='Free').get()
-    print(MembershipP.name)
-    return build_response.sent_ok()
-    '''
-    
-    membershipPlans = MembershipPlan.objects().order_by('name')
-    '''
-    if not membershipPlans:
-        return build_response.build_json([])
-    #return build_response.sent_json(users.to_json())
-    '''
-    response_membershipPlans = []
-
-    for membershipP in membershipPlans:
-        obj_membershipP = {
-            '_id': str(membershipP.id),
-            'name': membershipP.name,
-            #'description': membershipP.description,
-            #'amount': membershipP.amount,
-            'date_created': membershipP.date_created.isoformat(),
-            'date_modified': membershipP.date_modified.isoformat()
-        }
-        response_membershipPlans.append(obj_membershipP)
-
-    #return build_response.build_json(response_membershipPlans)
-    return build_response.sent_json(membershipPlans.to_json())
-
 
 @users.route('', methods=['POST'])
 @admin_required
@@ -128,10 +83,6 @@ def read_users():
     if request.args.get('email'):
         users = users.filter(email__istartswith=request.args.get('email'))
 
-    if request.args.get('membership'):
-        membershipP = MembershipPlan.objects(name__iexact=request.args.get('membership')).get()
-        users = users.filter(MembershipPlan=membershipP)
-
 
     if not users:
         return build_response.build_json([])
@@ -144,6 +95,49 @@ def read_users():
 
     return build_response.build_json(response_users)
 
+@users.route('/findusers')
+#@login_required
+def find_users():
+    """
+    find list of users for the agent
+    :return:
+    """
+    page_nb = int(request.args.get('pageNumber'))
+
+    items_per_page = int(request.args.get('pageSize'))
+
+    offset = (page_nb - 1) * items_per_page if page_nb > 0 else 0
+
+    users = User.objects()
+    if request.args.get('firstName'):
+        users = users.filter(firstName__istartswith=request.args.get('firstName'))
+
+    if request.args.get('lastName'):
+        users = users.filter(lastName__istartswith=request.args.get('lastName'))
+
+    if request.args.get('email'):
+        users = users.filter(email__istartswith=request.args.get('email'))
+
+    if request.args.get('country'):
+        country = Country.objects(id=request.args.get('country')).get()
+        users = users.filter(country=country)
+
+    if request.args.get('state'):
+        users = users.filter(state__istartswith=request.args.get('state'))
+
+    if not users:
+        return build_response.build_json([])
+
+    users = users.order_by('-date_modified')
+    #users = skip( offset ).limit( items_per_page )
+
+    response_users = []
+
+    for user in users:
+        obj_user = transpose_user(user)
+        response_users.append(obj_user)
+
+    return build_response.build_json({"payload":response_users})
 
 
 @users.route('/<id>')

@@ -2,7 +2,6 @@ import os
 from flask import request, g, url_for
 from flask import current_app as app
 from app.countries.models import Country
-from app.users.models import MembershipPlan
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
 import datetime

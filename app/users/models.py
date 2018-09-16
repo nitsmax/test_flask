@@ -4,14 +4,8 @@ from mongoengine.fields import ListField,\
     ObjectIdField, StringField,\
     BooleanField, Document, DateTimeField,DecimalField,ReferenceField,IntField
 import datetime
+from app.countries.models import Country
 
-
-class MembershipPlan(Document):
-    name = StringField(max_length=50, required=True, unique=True)
-    description = StringField(max_length=200),
-    amount = DecimalField(precision=2, required=True)
-    date_created = DateTimeField(default=datetime.datetime.utcnow)
-    date_modified = DateTimeField(default=datetime.datetime.utcnow)
         
 class User(Document):
     firstName = StringField(max_length=100, required=True)
@@ -22,6 +16,7 @@ class User(Document):
     imagefile = StringField(max_length=255)
     userType = StringField(required=True,default='User')
     countryCode = StringField(max_length=3, required=True)
+    country = ReferenceField(Country)
     state = StringField(max_length=250, required=True)
     city = StringField(max_length=250)
     zipcode = StringField(max_length=20)
