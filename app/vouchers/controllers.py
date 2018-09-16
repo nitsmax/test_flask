@@ -5,18 +5,16 @@ from flask import current_app as app
 from app.commons import build_response
 from app.vouchers.models import Voucher
 from app.auth.models import login_required, admin_required
-from app.voucher.tasks import transpose_voucher
+from app.vouchers.tasks import transpose_voucher,save_voucher
 from app.commons.utils import update_document
-from werkzeug.security import generate_password_hash, check_password_hash
-from werkzeug.utils import secure_filename
 
 
 vouchers = Blueprint('vouchers_blueprint', __name__,
                     url_prefix='/api/vouchers')
 
-@vouchers.route('/membershipplans')
+@vouchers.route('/vouchers')
 #@admin_required
-def get_membershipplans():
+def get_vouchers():
     '''
     For inserting the categories
     '''
@@ -61,79 +59,52 @@ def get_membershipplans():
 
 
 @vouchers.route('', methods=['POST'])
-@admin_required
+#@admin_required
 def create_voucher():
     """
     Create a story from the provided json
     :param json:
     :return:
     """
-    voucher = User()
-
-    # check if the post request has the file part
-    if 'Image' in request.files:
-        print(request.files)
-        file = request.files['Image']
-        filename = secure_filename(file.filename)
-        print(filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        voucher.imagefile = filename
-
-    
-    voucher.firstName = request.form['firstName']
-    voucher.lastName = request.form['lastName']
-    voucher.email = request.form['email']
-    voucher.password = generate_password_hash(request.form['password'])
-
-    '''
-    content = request.get_json(silent=True)
-
-    voucher = User()
-    voucher.firstName = content.get("firstName")
-    voucher.lastName = content.get("lastName")
-    voucher.email = content.get("email")
-    voucher.password = generate_password_hash(content.get("password"))
-    '''
-    
+    voucher = Voucher()
     try:
-        voucher_id = voucher.save()
+        save_response = save_voucher(voucher)
+        if 'error' in save_response:
+            raise Exception(save_response['error'])
+        else:
+            return build_response.build_json({
+                "_id": str(save_response['voucher_id'])
+            })
     except Exception as e:
         return build_response.build_json({"error": str(e)})
 
-    return build_response.build_json({
-        "_id": str(voucher_id.id)
-    })
 
-
-@vouchers.route('')
-#@admin_required
-def read_vouchers():
+#@login_required
+@vouchers.route('/findvouchers')
+def find_vouchers():
     """
-    find list of vouchers
+    find list of vouchers for the agent
     :return:
     """
-    '''
-    vouchers = User.objects().order_by('lastName')
-    return build_response.sent_json(vouchers.to_json())
-    '''
+    page_nb = int(request.args.get('pageNumber'))
 
-    vouchers = User.objects()
-    if request.args.get('firstName'):
-        vouchers = vouchers.filter(firstName__istartswith=request.args.get('firstName'))
+    items_per_page = int(request.args.get('pageSize'))
 
-    if request.args.get('lastName'):
-        vouchers = vouchers.filter(lastName__istartswith=request.args.get('lastName'))
+    offset = (page_nb - 1) * items_per_page if page_nb > 0 else 0
 
-    if request.args.get('email'):
-        vouchers = vouchers.filter(email__istartswith=request.args.get('email'))
+    vouchers = Voucher.objects()
+    if request.args.get('name'):
+        vouchers = vouchers.filter(name__iexact=request.args.get('name'))
 
-    if request.args.get('membership'):
-        membershipP = MembershipPlan.objects(name__iexact=request.args.get('membership')).get()
-        vouchers = vouchers.filter(MembershipPlan=membershipP)
+    if request.args.get('code'):
+        vouchers = vouchers.filter(code__icontains=request.args.get('code'))
 
 
     if not vouchers:
         return build_response.build_json([])
+
+    vouchers = vouchers.order_by('-date_modified')
+    #vouchers = skip( offset ).limit( items_per_page )
 
     response_vouchers = []
 
@@ -141,27 +112,17 @@ def read_vouchers():
         obj_voucher = transpose_voucher(voucher)
         response_vouchers.append(obj_voucher)
 
-    return build_response.build_json(response_vouchers)
-
-
+    return build_response.build_json({"payload":response_vouchers})
 
 @vouchers.route('/<id>')
-#@login_required
 def read_voucher(id):
     """
     Find details for the given voucher id
     :param id:
     :return:
     """
-    '''return Response(response=dumps(
-        User.objects.get(
-            id=ObjectId(
-                id)).to_mongo().to_dict()),
-        status=200,
-        mimetype="application/json")'''
-
     try:
-        voucher = User.objects.get(id=ObjectId(id))
+        voucher = Voucher.objects.get(id=ObjectId(id))
     except Exception as e:
         return build_response.build_json({"error": str(e)})
 
@@ -170,38 +131,31 @@ def read_voucher(id):
 
 @vouchers.route('/<id>', methods=['PUT'])
 def update_voucher(id):
-    """
-    Update a story from the provided json
-    :param intent_id:
-    :param json:
-    :return:
-    """
-    json_data = loads(request.get_data().decode('utf-8'))
-    voucher = User.objects.get(id=ObjectId(id))
-    voucher = update_document(voucher, json_data)
-    voucher_id.save()
-    return 'success', 200
+    voucher = Voucher.objects.get(id=ObjectId(id))
+    try:
+        save_response = save_voucher(voucher)
+        if 'error' in save_response:
+            raise Exception(save_response['error'])
+        else:
+            return build_response.build_json({
+                "_id": str(save_response['voucher_id'])
+            })
+    except Exception as e:
+        return build_response.build_json({"error": str(e)})
+
 
 
 @vouchers.route('/<id>', methods=['DELETE'])
 def delete_voucher(id):
     """
-    Delete a intent
+    Delete a voucher
     :param id:
     :return:
     """
-    Intent.objects.get(id=ObjectId(id)).delete()
-
     try:
-        train_models()
-    except BaseException:
-        pass
+        voucher = Voucher.objects.get(id=ObjectId(id))
+    except Exception as e:
+        return build_response.build_json({"error": str(e)})
 
-    # remove NER model for the deleted stoy
-    try:
-        os.remove("{}/{}.model".format(app.config["MODELS_DIR"], id))
-    except OSError:
-        pass
+    voucher.delete()
     return build_response.sent_ok()
-
-
