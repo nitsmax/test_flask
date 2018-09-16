@@ -10,7 +10,8 @@ import datetime
 def login_required(f):
     @functools.wraps(f)
     def wrap(*args, **kwargs):
-        header = request.headers.get('Authorization')
+        #print(request.authorization)
+        header = request.authorization
         if not header:
             return build_response.build_json({"error": 'Authorization header is required'})
 
