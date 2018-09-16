@@ -226,8 +226,8 @@ def delete_emoji(id):
     emoji.delete()
     return build_response.sent_ok()
 
-@login_required
 @emojis.route('/copy-emoji', methods=['POST'])
+@login_required
 def copy_emoji():
     return build_response.sent_ok()
     """

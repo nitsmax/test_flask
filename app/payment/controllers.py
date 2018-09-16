@@ -8,6 +8,7 @@ from app.users.models import User
 from app.users.tasks import save_user, transpose_user, create_jwttoken,getUserBySoicalId
 from app.commons.utils import update_document
 from werkzeug.security import generate_password_hash, check_password_hash
+from app.auth.models import login_required
 
 
 payment = Blueprint('payment_blueprint', __name__,
@@ -15,6 +16,7 @@ payment = Blueprint('payment_blueprint', __name__,
 
 
 @payment.route('/checkout')
+@login_required
 def checkout():
     return build_response.build_json(
             {

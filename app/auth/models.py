@@ -40,7 +40,11 @@ def login_required(f):
         else:
             return build_response.build_json({"error": 'Token is expired.'})
 
-        g.user = user
+        if not user:
+            return build_response.build_json({"error": 'Token is not valid.'})
+        else:
+            g.user = user
+            
         return f(*args, **kwargs)
     return wrap
 

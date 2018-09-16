@@ -1,10 +1,11 @@
 import os
 from bson.json_util import dumps
 from bson.objectid import ObjectId
-from flask import Blueprint, request, Response
+from flask import Blueprint, request, Response, g
 from flask import current_app as app
 from app.commons import build_response
 from app.users.models import User
+from app.auth.models import login_required, admin_required
 from app.users.tasks import save_user, transpose_user, create_jwttoken,getUserBySoicalId
 from app.commons.utils import update_document
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -140,5 +141,70 @@ def soical_signup():
                     'auth_token': create_jwttoken(signupType,socialId)[1].decode('utf-8')
                 }
             )
+    except Exception as e:
+        return build_response.build_json({"status":False, "error": str(e)})
+
+
+@auth.route('/profile')
+@login_required
+def profile():
+    user = g.user
+    return build_response.build_json(
+        {
+            'status':True,
+            'profile':transpose_user(user)
+        }
+    )
+
+@auth.route('/profile', methods=['POST'])
+@login_required
+def update_profile():
+    user = g.user
+    content = request.get_json(silent=True)
+    user.firstName = content.get("firstName")
+    user.lastName = content.get("lastName")
+
+    if content.get("email") and content.get("email") != user.email:
+        if User.objects(email=content.get("email")):
+            return build_response.build_json({"status":False, "error": 'Email already exist.'})
+        else:
+            user.email = content.get("email")
+
+    try:
+        user_id = user.save()
+        return build_response.build_json(
+            {
+                'status':True,
+                'membership': 'Free' if user.membershipPlan == 0 else 'Paid',
+                'auth_token': create_jwttoken(1,user.email)[1].decode('utf-8')
+            }
+        )
+    except Exception as e:
+        return build_response.build_json({"status":False, "error": str(e)})
+
+@auth.route('/changepassword', methods=['POST'])
+@login_required
+def change_password():
+    user = g.user
+    content = request.get_json(silent=True)
+
+    newPassword = content.get("newPassword")
+    oldPassword = content.get("oldPassword")
+    
+    
+    
+    if not check_password_hash(user.password, oldPassword):
+        return build_response.build_json({"status":False, "error": 'Old password is incorrect.'})
+
+    user.password = generate_password_hash(newPassword)
+
+    try:
+        user.save()
+        return build_response.build_json(
+            {
+                'status':True,
+                'message': 'Password has updated'
+            }
+        )
     except Exception as e:
         return build_response.build_json({"status":False, "error": str(e)})
