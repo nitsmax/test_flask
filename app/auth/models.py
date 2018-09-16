@@ -4,7 +4,6 @@ from app.commons import build_response
 from flask import request, g
 import functools
 import jwt
-import base64
 import datetime
 
 def login_required(f):
@@ -22,7 +21,7 @@ def login_required(f):
             return build_response.build_json({"error": str(e)})
 
         try:
-            decoded = jwt.decode(base64.b64decode(token), app.config['KEY'], algorithms='HS256')
+            decoded = jwt.decode(token, app.config['KEY'], algorithms='HS256')
         except jwt.DecodeError as e:
             return build_response.build_json({"error": 'Token is not valid.'})
         except jwt.ExpiredSignatureError:
@@ -96,4 +95,4 @@ def create_jwttoken(signupType,fieldValue):
     refresh_token = jwt.encode({field: fieldValue},
                          app.config['KEY'], algorithm='HS256')
 
-    return [base64.b64encode(auth_token).decode('utf-8'), base64.b64encode(refresh_token).decode('utf-8')]
+    return [auth_token.decode('utf-8'), refresh_token.decode('utf-8')]

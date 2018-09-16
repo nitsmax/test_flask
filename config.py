@@ -21,7 +21,7 @@ class Config(object):
     UPLOAD_FOLDER = "uploads/"
 
     #Auth token
-    KEY = 'Basic'
+    KEY = 'secret'
     ACTIVATION_EXPIRE_DAYS = 5
     TOKEN_EXPIRE_HOURS = 1
 
