@@ -1,0 +1,300 @@
+{"_id":{"$oid":"55a0f1d420a4d760b5fbdc19"},"CountryName":"World","Language":"en","CountryCode":0,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbdc17"},"CountryName":"Oceania","Language":"en","CountryCode":0,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbdc18"},"CountryName":"South America","Language":"en","CountryCode":0,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbdc6b"},"CountryName":"Africa","Language":"en","CountryCode":0,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbdd82"},"CountryName":"Eastern Africa","Language":"en","CountryCode":1,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbdd83"},"CountryName":"Middle Africa","Language":"en","CountryCode":1,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbdd80"},"CountryName":"Americas","Language":"en","CountryCode":1,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbdd81"},"CountryName":"Central America","Language":"en","CountryCode":1,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbdd86"},"CountryName":"Western Africa","Language":"en","CountryCode":1,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbdc16"},"CountryName":"North America","Language":"en","CountryCode":0,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbdd85"},"CountryName":"Southern Africa","Language":"en","CountryCode":1,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbdf14"},"CountryName":"Caribbean","Language":"en","CountryCode":2,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbdf15"},"CountryName":"Northern America","Language":"en","CountryCode":2,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbdfb1"},"CountryName":"Southern Europe","Language":"en","CountryCode":3,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbdfae"},"CountryName":"Eastern Asia","Language":"en","CountryCode":3,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbdfaf"},"CountryName":"South-Eastern Asia","Language":"en","CountryCode":3,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbdd84"},"CountryName":"Northern Africa","Language":"en","CountryCode":1,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbdfb0"},"CountryName":"Southern Asia","Language":"en","CountryCode":3,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe158"},"CountryName":"Polynesia","Language":"en","CountryCode":6,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe159"},"CountryName":"South-Central Asia","Language":"en","CountryCode":6,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe1e5"},"CountryName":"Asia","Language":"en","CountryCode":14,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe1e7"},"CountryName":"Western Asia","Language":"en","CountryCode":14,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe0a4"},"CountryName":"Australia and New Zealand","Language":"en","CountryCode":5,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe1e6"},"CountryName":"Central Asia","Language":"en","CountryCode":14,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe2bb"},"CountryName":"Eastern Europe","Language":"en","CountryCode":15,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe2be"},"CountryName":"Western Europe","Language":"en","CountryCode":15,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe2bc"},"CountryName":"Europe","Language":"en","CountryCode":15,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe2bd"},"CountryName":"Northern Europe","Language":"en","CountryCode":15,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe39c"},"CountryName":"Commonwealth of Independent States","Language":"en","CountryCode":17,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe3cf"},"CountryName":"Czechoslovakia","Language":"en","CountryCode":20,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe41e"},"CountryName":"Channel Islands","Language":"en","CountryCode":83,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe3e3"},"CountryName":"Latin America and the Caribbean","Language":"en","CountryCode":41,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe44b"},"CountryName":"Andorra","Language":"en","CountryCode":"AD","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe498"},"CountryName":"United Arab Emirates","Language":"en","CountryCode":"AE","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe4ed"},"CountryName":"Afghanistan","Language":"en","CountryCode":"AF","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe58a"},"CountryName":"Anguilla","Language":"en","CountryCode":"AI","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe541"},"CountryName":"Antigua and Barbuda","Language":"en","CountryCode":"AG","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe5d3"},"CountryName":"Albania","Language":"en","CountryCode":"AL","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe623"},"CountryName":"Armenia","Language":"en","CountryCode":"AM","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe675"},"CountryName":"Netherlands Antilles","Language":"en","CountryCode":"AN","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe0a5"},"CountryName":"Melanesia","Language":"en","CountryCode":5,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe0a6"},"CountryName":"Micronesian Region","Language":"en","CountryCode":5,"displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe710"},"CountryName":"Antarctica","Language":"en","CountryCode":"AQ","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe6bf"},"CountryName":"Angola","Language":"en","CountryCode":"AO","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe7f5"},"CountryName":"Austria","Language":"en","CountryCode":"AT","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe848"},"CountryName":"Australia","Language":"en","CountryCode":"AU","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe8a4"},"CountryName":"Aruba","Language":"en","CountryCode":"AW","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe7b0"},"CountryName":"American Samoa","Language":"en","CountryCode":"AS","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe929"},"CountryName":"Azerbaijan","Language":"en","CountryCode":"AZ","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe8e2"},"CountryName":"Åland Islands","Language":"en","CountryCode":"AX","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe9cd"},"CountryName":"Barbados","Language":"en","CountryCode":"BB","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe97b"},"CountryName":"Bosnia and Herzegovina","Language":"en","CountryCode":"BA","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbea1b"},"CountryName":"Bangladesh","Language":"en","CountryCode":"BD","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbe75f"},"CountryName":"Argentina","Language":"en","CountryCode":"AR","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbeb64"},"CountryName":"Bahrain","Language":"en","CountryCode":"BH","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbea6c"},"CountryName":"Belgium","Language":"en","CountryCode":"BE","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbebaf"},"CountryName":"Burundi","Language":"en","CountryCode":"BI","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbeb0a"},"CountryName":"Bulgaria","Language":"en","CountryCode":"BG","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbebfa"},"CountryName":"Benin","Language":"en","CountryCode":"BJ","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbecc6"},"CountryName":"Brunei","Language":"en","CountryCode":"BN","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbec41"},"CountryName":"Saint Barthélemy","Language":"en","CountryCode":"BL","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbec7d"},"CountryName":"Bermuda","Language":"en","CountryCode":"BM","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbeac1"},"CountryName":"Burkina Faso","Language":"en","CountryCode":"BF","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbedbf"},"CountryName":"Bahamas","Language":"en","CountryCode":"BS","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbed53"},"CountryName":"British Antarctic Territory","Language":"en","CountryCode":"BQ","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbed11"},"CountryName":"Bolivia","Language":"en","CountryCode":"BO","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbee1a"},"CountryName":"Bhutan","Language":"en","CountryCode":"BT","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbee58"},"CountryName":"Bouvet Island","Language":"en","CountryCode":"BV","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbeef9"},"CountryName":"Belarus","Language":"en","CountryCode":"BY","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbeea8"},"CountryName":"Botswana","Language":"en","CountryCode":"BW","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbef4a"},"CountryName":"Belize","Language":"en","CountryCode":"BZ","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf02d"},"CountryName":"Congo - Kinshasa","Language":"en","CountryCode":"CD","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbefe9"},"CountryName":"Cocos [Keeling] Islands","Language":"en","CountryCode":"CC","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf076"},"CountryName":"Central African Republic","Language":"en","CountryCode":"CF","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf0c6"},"CountryName":"Congo - Brazzaville","Language":"en","CountryCode":"CG","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbef98"},"CountryName":"Canada","Language":"en","CountryCode":"CA","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf115"},"CountryName":"Switzerland","Language":"en","CountryCode":"CH","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf16a"},"CountryName":"Côte d’Ivoire","Language":"en","CountryCode":"CI","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf1b4"},"CountryName":"Cook Islands","Language":"en","CountryCode":"CK","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf1fe"},"CountryName":"Chile","Language":"en","CountryCode":"CL","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf24b"},"CountryName":"Cameroon","Language":"en","CountryCode":"CM","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbed65"},"CountryName":"Brazil","Language":"en","CountryCode":"BR","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf353"},"CountryName":"Costa Rica","Language":"en","CountryCode":"CR","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf39a"},"CountryName":"Serbia and Montenegro","Language":"en","CountryCode":"CS","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf301"},"CountryName":"Colombia","Language":"en","CountryCode":"CO","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf3d5"},"CountryName":"Canton and Enderbury Islands","Language":"en","CountryCode":"CT","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf3e5"},"CountryName":"Cuba","Language":"en","CountryCode":"CU","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf434"},"CountryName":"Cape Verde","Language":"en","CountryCode":"CV","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf480"},"CountryName":"Christmas Island","Language":"en","CountryCode":"CX","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf51a"},"CountryName":"Czech Republic","Language":"en","CountryCode":"CZ","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf55f"},"CountryName":"East Germany","Language":"en","CountryCode":"DD","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf4c8"},"CountryName":"Cyprus","Language":"en","CountryCode":"CY","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf571"},"CountryName":"Germany","Language":"en","CountryCode":"DE","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf5ce"},"CountryName":"Djibouti","Language":"en","CountryCode":"DJ","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf616"},"CountryName":"Denmark","Language":"en","CountryCode":"DK","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf671"},"CountryName":"Dominica","Language":"en","CountryCode":"DM","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf6bf"},"CountryName":"Dominican Republic","Language":"en","CountryCode":"DO","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf762"},"CountryName":"Ecuador","Language":"en","CountryCode":"EC","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf7b3"},"CountryName":"Estonia","Language":"en","CountryCode":"EE","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf710"},"CountryName":"Algeria","Language":"en","CountryCode":"DZ","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf808"},"CountryName":"Egypt","Language":"en","CountryCode":"EG","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf864"},"CountryName":"Western Sahara","Language":"en","CountryCode":"EH","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf8aa"},"CountryName":"Eritrea","Language":"en","CountryCode":"ER","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf971"},"CountryName":"Ethiopia","Language":"en","CountryCode":"ET","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf2a6"},"CountryName":"China","Language":"en","CountryCode":"CN","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf8fd"},"CountryName":"Spain","Language":"en","CountryCode":"ES","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbfa8e"},"CountryName":"Micronesia","Language":"en","CountryCode":"FM","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf9fa"},"CountryName":"Fiji","Language":"en","CountryCode":"FJ","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbfadb"},"CountryName":"Faroe Islands","Language":"en","CountryCode":"FO","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbfa4e"},"CountryName":"Falkland Islands","Language":"en","CountryCode":"FK","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbfb1c"},"CountryName":"French Southern and Antarctic Territories","Language":"en","CountryCode":"FQ","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbfb2e"},"CountryName":"France","Language":"en","CountryCode":"FR","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbfb7c"},"CountryName":"Metropolitan France","Language":"en","CountryCode":"FX","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbfb8b"},"CountryName":"Gabon","Language":"en","CountryCode":"GA","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbf9b3"},"CountryName":"Finland","Language":"en","CountryCode":"FI","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbfc7f"},"CountryName":"Georgia","Language":"en","CountryCode":"GE","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbfccb"},"CountryName":"French Guiana","Language":"en","CountryCode":"GF","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbfd11"},"CountryName":"Guernsey","Language":"en","CountryCode":"GG","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbfd53"},"CountryName":"Ghana","Language":"en","CountryCode":"GH","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbfc35"},"CountryName":"Grenada","Language":"en","CountryCode":"GD","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbfda2"},"CountryName":"Gibraltar","Language":"en","CountryCode":"GI","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbfde6"},"CountryName":"Greenland","Language":"en","CountryCode":"GL","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbfe30"},"CountryName":"Gambia","Language":"en","CountryCode":"GM","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbfec0"},"CountryName":"Guinea","Language":"en","CountryCode":"GN","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbfbda"},"CountryName":"United Kingdom","Language":"en","CountryCode":"GB","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbffbb"},"CountryName":"South Georgia and the South Sandwich Islands","Language":"en","CountryCode":"GS","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbff68"},"CountryName":"Greece","Language":"en","CountryCode":"GR","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0003"},"CountryName":"Guatemala","Language":"en","CountryCode":"GT","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0042"},"CountryName":"Guam","Language":"en","CountryCode":"GU","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc008e"},"CountryName":"Guinea-Bissau","Language":"en","CountryCode":"GW","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc00e4"},"CountryName":"Guyana","Language":"en","CountryCode":"GY","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0123"},"CountryName":"Hong Kong SAR China","Language":"en","CountryCode":"HK","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbfee1"},"CountryName":"Guadeloupe","Language":"en","CountryCode":"GP","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0201"},"CountryName":"Croatia","Language":"en","CountryCode":"HR","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc01b9"},"CountryName":"Honduras","Language":"en","CountryCode":"HN","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc025c"},"CountryName":"Haiti","Language":"en","CountryCode":"HT","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc02b2"},"CountryName":"Hungary","Language":"en","CountryCode":"HU","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0353"},"CountryName":"Ireland","Language":"en","CountryCode":"IE","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc02f9"},"CountryName":"Indonesia","Language":"en","CountryCode":"ID","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc03a1"},"CountryName":"Israel","Language":"en","CountryCode":"IL","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0173"},"CountryName":"Heard Island and McDonald Islands","Language":"en","CountryCode":"HM","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fbff14"},"CountryName":"Equatorial Guinea","Language":"en","CountryCode":"GQ","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc043f"},"CountryName":"India","Language":"en","CountryCode":"IN","displayOrder":1,"monthlyAmount":201.0,"countryCurrency":"INR"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0539"},"CountryName":"Iran","Language":"en","CountryCode":"IR","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc049d"},"CountryName":"British Indian Ocean Territory","Language":"en","CountryCode":"IO","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc04e8"},"CountryName":"Iraq","Language":"en","CountryCode":"IQ","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc05ed"},"CountryName":"Italy","Language":"en","CountryCode":"IT","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc058e"},"CountryName":"Iceland","Language":"en","CountryCode":"IS","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc03f8"},"CountryName":"Isle of Man","Language":"en","CountryCode":"IM","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0631"},"CountryName":"Jersey","Language":"en","CountryCode":"JE","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc073b"},"CountryName":"Japan","Language":"en","CountryCode":"JP","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc076f"},"CountryName":"Johnston Island","Language":"en","CountryCode":"JT","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc077f"},"CountryName":"Kenya","Language":"en","CountryCode":"KE","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc07d0"},"CountryName":"Kyrgyzstan","Language":"en","CountryCode":"KG","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc081f"},"CountryName":"Cambodia","Language":"en","CountryCode":"KH","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc067d"},"CountryName":"Jamaica","Language":"en","CountryCode":"JM","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc086d"},"CountryName":"Kiribati","Language":"en","CountryCode":"KI","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc06cc"},"CountryName":"Jordan","Language":"en","CountryCode":"JO","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc09ae"},"CountryName":"South Korea","Language":"en","CountryCode":"KR","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc08bd"},"CountryName":"Comoros","Language":"en","CountryCode":"KM","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0953"},"CountryName":"North Korea","Language":"en","CountryCode":"KP","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc090e"},"CountryName":"Saint Kitts and Nevis","Language":"en","CountryCode":"KN","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0aec"},"CountryName":"Laos","Language":"en","CountryCode":"LA","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0a05"},"CountryName":"Kuwait","Language":"en","CountryCode":"KW","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0aa0"},"CountryName":"Kazakhstan","Language":"en","CountryCode":"KZ","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0a51"},"CountryName":"Cayman Islands","Language":"en","CountryCode":"KY","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0b34"},"CountryName":"Lebanon","Language":"en","CountryCode":"LB","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0b87"},"CountryName":"Saint Lucia","Language":"en","CountryCode":"LC","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0c6b"},"CountryName":"Liberia","Language":"en","CountryCode":"LR","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0c1d"},"CountryName":"Sri Lanka","Language":"en","CountryCode":"LK","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0cbb"},"CountryName":"Lesotho","Language":"en","CountryCode":"LS","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0d09"},"CountryName":"Lithuania","Language":"en","CountryCode":"LT","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0d59"},"CountryName":"Luxembourg","Language":"en","CountryCode":"LU","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0da6"},"CountryName":"Latvia","Language":"en","CountryCode":"LV","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0dfd"},"CountryName":"Libya","Language":"en","CountryCode":"LY","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0bd0"},"CountryName":"Liechtenstein","Language":"en","CountryCode":"LI","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0e9e"},"CountryName":"Monaco","Language":"en","CountryCode":"MC","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0f2d"},"CountryName":"Montenegro","Language":"en","CountryCode":"ME","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0e44"},"CountryName":"Morocco","Language":"en","CountryCode":"MA","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0f6b"},"CountryName":"Saint Martin","Language":"en","CountryCode":"MF","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0ee6"},"CountryName":"Moldova","Language":"en","CountryCode":"MD","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0fad"},"CountryName":"Madagascar","Language":"en","CountryCode":"MG","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1039"},"CountryName":"Midway Islands","Language":"en","CountryCode":"MI","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc0ffa"},"CountryName":"Marshall Islands","Language":"en","CountryCode":"MH","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1047"},"CountryName":"Macedonia","Language":"en","CountryCode":"MK","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1186"},"CountryName":"Macau SAR China","Language":"en","CountryCode":"MO","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc10e4"},"CountryName":"Myanmar [Burma]","Language":"en","CountryCode":"MM","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1133"},"CountryName":"Mongolia","Language":"en","CountryCode":"MN","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1098"},"CountryName":"Mali","Language":"en","CountryCode":"ML","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc11ce"},"CountryName":"Northern Mariana Islands","Language":"en","CountryCode":"MP","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc12a7"},"CountryName":"Montserrat","Language":"en","CountryCode":"MS","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1214"},"CountryName":"Martinique","Language":"en","CountryCode":"MQ","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc126d"},"CountryName":"Mauritania","Language":"en","CountryCode":"MR","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc12eb"},"CountryName":"Malta","Language":"en","CountryCode":"MT","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc141d"},"CountryName":"Mexico","Language":"en","CountryCode":"MX","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1387"},"CountryName":"Maldives","Language":"en","CountryCode":"MV","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1336"},"CountryName":"Mauritius","Language":"en","CountryCode":"MU","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc146b"},"CountryName":"Malaysia","Language":"en","CountryCode":"MY","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc13cf"},"CountryName":"Malawi","Language":"en","CountryCode":"MW","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc14bc"},"CountryName":"Mozambique","Language":"en","CountryCode":"MZ","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc150e"},"CountryName":"Namibia","Language":"en","CountryCode":"NA","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1563"},"CountryName":"New Caledonia","Language":"en","CountryCode":"NC","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc15b3"},"CountryName":"Niger","Language":"en","CountryCode":"NE","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc15fe"},"CountryName":"Norfolk Island","Language":"en","CountryCode":"NF","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1743"},"CountryName":"Norway","Language":"en","CountryCode":"NO","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1798"},"CountryName":"Nepal","Language":"en","CountryCode":"NP","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc169c"},"CountryName":"Nicaragua","Language":"en","CountryCode":"NI","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc16ed"},"CountryName":"Netherlands","Language":"en","CountryCode":"NL","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1647"},"CountryName":"Nigeria","Language":"en","CountryCode":"NG","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc17db"},"CountryName":"Dronning Maud Land","Language":"en","CountryCode":"NQ","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1820"},"CountryName":"Neutral Zone","Language":"en","CountryCode":"NT","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc17ea"},"CountryName":"Nauru","Language":"en","CountryCode":"NR","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1873"},"CountryName":"New Zealand","Language":"en","CountryCode":"NZ","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc182e"},"CountryName":"Niue","Language":"en","CountryCode":"NU","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc195e"},"CountryName":"Peru","Language":"en","CountryCode":"PE","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1910"},"CountryName":"Panama","Language":"en","CountryCode":"PA","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc19aa"},"CountryName":"French Polynesia","Language":"en","CountryCode":"PF","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc18c5"},"CountryName":"Oman","Language":"en","CountryCode":"OM","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc19f8"},"CountryName":"Papua New Guinea","Language":"en","CountryCode":"PG","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1a49"},"CountryName":"Philippines","Language":"en","CountryCode":"PH","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1a99"},"CountryName":"Pakistan","Language":"en","CountryCode":"PK","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1ae9"},"CountryName":"Poland","Language":"en","CountryCode":"PL","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc194c"},"CountryName":"Pacific Islands Trust Territory","Language":"en","CountryCode":"PC","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1b38"},"CountryName":"Saint Pierre and Miquelon","Language":"en","CountryCode":"PM","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1c03"},"CountryName":"Palestinian Territories","Language":"en","CountryCode":"PS","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1bbb"},"CountryName":"Puerto Rico","Language":"en","CountryCode":"PR","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1c4c"},"CountryName":"Portugal","Language":"en","CountryCode":"PT","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1c9b"},"CountryName":"Palau","Language":"en","CountryCode":"PW","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1c8f"},"CountryName":"U.S. Miscellaneous Pacific Islands","Language":"en","CountryCode":"PU","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1b7b"},"CountryName":"Pitcairn Islands","Language":"en","CountryCode":"PN","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1ce3"},"CountryName":"Paraguay","Language":"en","CountryCode":"PY","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1d7a"},"CountryName":"Outlying Oceania","Language":"en","CountryCode":"QO","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1db3"},"CountryName":"European Union","Language":"en","CountryCode":"QU","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1d22"},"CountryName":"Panama Canal Zone","Language":"en","CountryCode":"PZ","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1d31"},"CountryName":"Qatar","Language":"en","CountryCode":"QA","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1e39"},"CountryName":"Romania","Language":"en","CountryCode":"RO","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1df5"},"CountryName":"Réunion","Language":"en","CountryCode":"RE","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1ece"},"CountryName":"Russia","Language":"en","CountryCode":"RU","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1f2a"},"CountryName":"Rwanda","Language":"en","CountryCode":"RW","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1e88"},"CountryName":"Serbia","Language":"en","CountryCode":"RS","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1f7b"},"CountryName":"Saudi Arabia","Language":"en","CountryCode":"SA","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc201a"},"CountryName":"Seychelles","Language":"en","CountryCode":"SC","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2067"},"CountryName":"Sudan","Language":"en","CountryCode":"SD","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc210d"},"CountryName":"Singapore","Language":"en","CountryCode":"SG","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc20b8"},"CountryName":"Sweden","Language":"en","CountryCode":"SE","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc21a2"},"CountryName":"Slovenia","Language":"en","CountryCode":"SI","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc21ef"},"CountryName":"Svalbard and Jan Mayen","Language":"en","CountryCode":"SJ","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2159"},"CountryName":"Saint Helena","Language":"en","CountryCode":"SH","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2234"},"CountryName":"Slovakia","Language":"en","CountryCode":"SK","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc1fce"},"CountryName":"Solomon Islands","Language":"en","CountryCode":"SB","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2283"},"CountryName":"Sierra Leone","Language":"en","CountryCode":"SL","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2369"},"CountryName":"Somalia","Language":"en","CountryCode":"SO","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc22ce"},"CountryName":"San Marino","Language":"en","CountryCode":"SM","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc23b7"},"CountryName":"Suriname","Language":"en","CountryCode":"SR","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2319"},"CountryName":"Senegal","Language":"en","CountryCode":"SN","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc243f"},"CountryName":"Union of Soviet Socialist Republics","Language":"en","CountryCode":"SU","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2401"},"CountryName":"São Tomé and Príncipe","Language":"en","CountryCode":"ST","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2450"},"CountryName":"El Salvador","Language":"en","CountryCode":"SV","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2498"},"CountryName":"Syria","Language":"en","CountryCode":"SY","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc25cc"},"CountryName":"French Southern Territories","Language":"en","CountryCode":"TF","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2534"},"CountryName":"Turks and Caicos Islands","Language":"en","CountryCode":"TC","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2617"},"CountryName":"Togo","Language":"en","CountryCode":"TG","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2663"},"CountryName":"Thailand","Language":"en","CountryCode":"TH","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc24eb"},"CountryName":"Swaziland","Language":"en","CountryCode":"SZ","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc26b4"},"CountryName":"Tajikistan","Language":"en","CountryCode":"TJ","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2703"},"CountryName":"Tokelau","Language":"en","CountryCode":"TK","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2759"},"CountryName":"Timor-Leste","Language":"en","CountryCode":"TL","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2832"},"CountryName":"Tonga","Language":"en","CountryCode":"TO","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc27e1"},"CountryName":"Tunisia","Language":"en","CountryCode":"TN","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2890"},"CountryName":"Turkey","Language":"en","CountryCode":"TR","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc28dc"},"CountryName":"Trinidad and Tobago","Language":"en","CountryCode":"TT","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc292c"},"CountryName":"Tuvalu","Language":"en","CountryCode":"TV","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc29bb"},"CountryName":"Tanzania","Language":"en","CountryCode":"TZ","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc296f"},"CountryName":"Taiwan","Language":"en","CountryCode":"TW","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc257a"},"CountryName":"Chad","Language":"en","CountryCode":"TD","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2a62"},"CountryName":"Uganda","Language":"en","CountryCode":"UG","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2aad"},"CountryName":"U.S. Minor Outlying Islands","Language":"en","CountryCode":"UM","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2af6"},"CountryName":"United States","Language":"en","CountryCode":"US","displayOrder":2,"monthlyAmount":100.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2b51"},"CountryName":"Uruguay","Language":"en","CountryCode":"UY","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2ba2"},"CountryName":"Uzbekistan","Language":"en","CountryCode":"UZ","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2bf1"},"CountryName":"Vatican City","Language":"en","CountryCode":"VA","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc278f"},"CountryName":"Turkmenistan","Language":"en","CountryCode":"TM","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2a0e"},"CountryName":"Ukraine","Language":"en","CountryCode":"UA","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2c3f"},"CountryName":"Saint Vincent and the Grenadines","Language":"en","CountryCode":"VC","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2cdc"},"CountryName":"British Virgin Islands","Language":"en","CountryCode":"VG","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2c8c"},"CountryName":"Venezuela","Language":"en","CountryCode":"VE","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2d25"},"CountryName":"U.S. Virgin Islands","Language":"en","CountryCode":"VI","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2d6f"},"CountryName":"Vietnam","Language":"en","CountryCode":"VN","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2e04"},"CountryName":"Wallis and Futuna","Language":"en","CountryCode":"WF","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2dbb"},"CountryName":"Vanuatu","Language":"en","CountryCode":"VU","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2e3d"},"CountryName":"Wake Island","Language":"en","CountryCode":"WK","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2c7d"},"CountryName":"North Vietnam","Language":"en","CountryCode":"VD","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2ee8"},"CountryName":"Mayotte","Language":"en","CountryCode":"YT","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2f2d"},"CountryName":"South Africa","Language":"en","CountryCode":"ZA","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2e4a"},"CountryName":"Samoa","Language":"en","CountryCode":"WS","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2f83"},"CountryName":"Zambia","Language":"en","CountryCode":"ZM","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2fd4"},"CountryName":"Zimbabwe","Language":"en","CountryCode":"ZW","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc3023"},"CountryName":"Unknown or Invalid Region","Language":"en","CountryCode":"ZZ","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2e98"},"CountryName":"Yemen","Language":"en","CountryCode":"YE","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
+{"_id":{"$oid":"55a0f1d420a4d760b5fc2e88"},"CountryName":"People's Democratic Republic of Yemen","Language":"en","CountryCode":"YD","displayOrder":500.0,"monthlyAmount":0.0,"countryCurrency":"dollar"}
