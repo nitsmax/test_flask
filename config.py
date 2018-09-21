@@ -25,6 +25,12 @@ class Config(object):
     ACTIVATION_EXPIRE_DAYS = 5
     TOKEN_EXPIRE_HOURS = 1
 
+    #braintree
+    BT_ENVIRONMENT = 'sandbox'
+    BT_MERCHANT_ID = 'hvk3qtwk5nydcz9d'
+    BT_PUBLIC_KEY = '5qdpynz7j23dsn8j'
+    BT_PRIVATE_KEY = 'bdee909188ba3dacc50a967c8d508931'
+
 
 class Development(Config):
     DEBUG = True
