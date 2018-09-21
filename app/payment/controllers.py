@@ -15,7 +15,7 @@ payment = Blueprint('payment_blueprint', __name__,
 
 
 @payment.route('/checkout')
-@login_required
+#@login_required
 def checkout():
     return build_response.build_json(
             {
