@@ -10,6 +10,11 @@ def date_from_string(timeString):
     result = str(cal.parseDT(timeString.strip(), now)[0])
     return result
 
+def dumpObj(obj):
+  for attr in dir(obj):
+    print("obj.%s = %r" % (attr, getattr(obj, attr)))
+
+
 from mongoengine.fields import ListField, SortedListField,\
     EmbeddedDocumentListField, EmbeddedDocumentField,\
     GenericEmbeddedDocumentField, ReferenceField,\
