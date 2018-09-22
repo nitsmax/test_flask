@@ -45,7 +45,30 @@ def checkout():
 @payment.route('/checkout', methods=['POST'])
 @login_required
 def post_checkout():
+    '''
+    {
+        "payment_method_nonce": "fake-valid-nonce",
+        "amount": 150,
+        "vouchercode": "GET50" // leave blank if not applied
+    }
+    '''
+    content = request.get_json(silent=True)
     try:
+        if content['amount'] not in [150,200]:
+            raise Exception('Payment Failed')
+
+        response = {
+            'status': True,
+            'message': 'Payment Successful'
+        }
+        return build_response.build_json(response)
+    except Exception as e:
+        return build_response.build_json({"status":False, "error": str(e)})
+        
+
+    try:
+        
+        return build_response.sent_ok()
         bt = BraintreeGateway()
 
         response = bt.create_customer({
@@ -80,3 +103,32 @@ def post_checkout():
     except Exception as e:
         return build_response.build_json({"status":False, "error": str(e)})
 
+
+@payment.route('/apply_voucher', methods=['POST'])
+@login_required
+def apply_voucher():
+    '''
+    {
+        "voucher_code": "GET25"
+    }
+    '''
+    content = request.get_json(silent=True)
+
+    try:
+        print(content['voucher_code'])
+        if content['voucher_code'] != 'GET25':
+            raise Exception('Invalid Token')
+
+        response = {
+            'status': True,
+            'voucher_code': 'GET25',
+            'voucher_discount': '25%',
+            'voucher_title': '25% discount applied',
+            'amount': 150,
+            'currency': 'INR',
+            'frequency': 'Monthly'
+        }
+        return build_response.build_json(response)
+    except Exception as e:
+        return build_response.build_json({"status":False, "error": str(e)})
+        
