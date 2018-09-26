@@ -1,109 +1,97 @@
 import os
 from bson.json_util import dumps
 from bson.objectid import ObjectId
-from flask import Blueprint, request, Response
+from flask import Blueprint, request, Response, g
 from flask import current_app as app
 from app.commons import build_response
-from app.users.models import User
-from app.commons.utils import update_document, dumpObj
-from werkzeug.security import generate_password_hash, check_password_hash
 from app.auth.models import login_required
-from app.payment.braintree_gateway import BraintreeGateway
 import json
-import pprint
-
+from app.payment.tasks import PaymentRepo
+from app.vouchers.models import Voucher
+import datetime
+from decimal import Decimal
 
 payment = Blueprint('payment_blueprint', __name__,
                     url_prefix='/api/payment')
 
 
 @payment.route('/checkout')
-#@login_required
+@login_required
 def checkout():
     try:
-        bt = BraintreeGateway()
-        response = bt.generate_client_token()
-
-        if not response['status']:
+        user = g.user
+        if not user.country:
             raise Exception('Some thing went wrong')
 
+        payment_repo = PaymentRepo()
+
+        client_token = payment_repo.bt_generate_client_token()
+
+        if 'error' in client_token:
+            raise Exception('Some thing went wrong')
+
+        membership_plan = {
+            'id': str(user.country.id),
+            'amount': float(round(user.country.monthlyAmount)),
+            'currency': user.country.countryCurrency,
+            'frequency': 'Monthly'
+        }
+
         return build_response.build_json(
-                {
-                    'status':True,
-                    'braintree_token': response['result'],
-                    'membership_plan': {
-                        'id': '55a0f1d420a4d760b5fc043f',
-                        'amount': 200,
-                        'currency': 'INR',
-                        'frequency': 'Monthly'
-                    }
-                }
-            )
+            {
+                'status':True,
+                'braintree_token': client_token['client_token'],
+                'membership_plan': membership_plan
+            }
+        )
     except Exception as e:
         return build_response.build_json({"status":False, "error": str(e)})
 
 @payment.route('/checkout', methods=['POST'])
 @login_required
 def post_checkout():
+    #Insert to Subscription
     '''
     {
-        "payment_method_nonce": "fake-valid-nonce",
+        "payment_method_payload": {
+            "nonce":"tokencc_bj_t68pp6_8h2y94_xfc3mm_j53prf_ph7",
+            "details":{
+                "cardType":"Visa",
+                "lastFour":"1111",
+                "lastTwo":"11"
+            },
+            "type":"CreditCard",
+            "description":"ending in 11",
+            "binData":{
+                
+            }
+        },
         "amount": 150,
-        "vouchercode": "GET50" // leave blank if not applied
+        "voucher_code": "GET50", #leave blank if not applied,
+        "gateway": "Braintree"
     }
     '''
-    content = request.get_json(silent=True)
     try:
-        if content['amount'] not in [150,200]:
-            raise Exception('Payment Failed')
+        content = request.get_json(silent=True)
+
+        payment_repo = PaymentRepo()
+
+        subscription = payment_repo.create_subscription()
+        if 'error' in subscription:
+            raise Exception(subscription['error'])
+
+        if not subscription['success']:
+            raise Exception('Payment Failed: '+subscription['error'])
 
         response = {
             'status': True,
+            'subscription_id': subscription['subscription_id'],
             'message': 'Payment Successful'
         }
         return build_response.build_json(response)
     except Exception as e:
-        return build_response.build_json({"status":False, "error": str(e)})
+        return build_response.build_json({"status":False, "error": 'Payment Failed'})
         
-
-    try:
-        
-        return build_response.sent_ok()
-        bt = BraintreeGateway()
-
-        response = bt.create_customer({
-            "first_name": "Charity",
-            "last_name": "Smith",
-            "payment_method_nonce": "ake-valid-nonce",
-        })
-
-        for key in dir(response['result']):
-            print('{}: {}'.format(key, getattr(response['result'], key)))
-
-        #pprint.pprint(vars(response['result']))
-        return build_response.sent_ok()
-
-        if not response['status']:
-            raise Exception('Some thing went wrong')
-
-
-        if not response['result'].is_success:
-            print(response['result'])
-            return build_response.sent_ok()
-            raise Exception('Some thing went wrong')
-
-
-        response = bt.subscription({
-            "payment_method_token": "fake-valid-nonce",
-            "plan_id": "monthly_india",
-            "price": 100 
-        })
-        print(response)
-        return build_response.sent_ok()
-    except Exception as e:
-        return build_response.build_json({"status":False, "error": str(e)})
-
-
 @payment.route('/apply_voucher', methods=['POST'])
 @login_required
 def apply_voucher():
@@ -113,19 +101,38 @@ def apply_voucher():
     }
     '''
     content = request.get_json(silent=True)
+    user = g.user
+    membershipPlan = user.country
 
     try:
-        print(content['voucher_code'])
-        if content['voucher_code'] != 'GET25':
+        voucher = Voucher.objects(code__exact=content.get('voucher_code'))
+        
+        if not voucher:
+            raise Exception('Not Exist:Invalid Token')
+
+        voucher = voucher.get()
+
+        if (voucher.uselimit - voucher.usedNum) <= 0:
             raise Exception('Invalid Token')
 
+        '''
+        if voucher.expireDate and voucher.expireDate < datetime.datetime.utcnow:
+            raise Exception('Invalid Token')
+
+        '''
+
+        if membershipPlan not in voucher.membershipPlan:
+            raise Exception('Invalid Token')
+
+        amount = Decimal(membershipPlan.monthlyAmount - (membershipPlan.monthlyAmount*voucher.discount)/100)
+        
         response = {
             'status': True,
-            'voucher_code': 'GET25',
-            'voucher_discount': '25%',
-            'voucher_title': '25% discount applied',
-            'amount': 150,
-            'currency': 'INR',
+            'voucher_code': voucher.code,
+            'voucher_discount': str(round(voucher.discount))+'%',
+            'voucher_title': voucher.name,
+            'amount': float(round(amount,2)),
+            'currency': membershipPlan.countryCurrency,
             'frequency': 'Monthly'
         }
         return build_response.build_json(response)

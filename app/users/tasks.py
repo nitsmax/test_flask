@@ -13,50 +13,52 @@ import base64
 def save_user(user):
 
     content = request.get_json(silent=True)
-
-    #existing user not update the data
-    if not user.id:
-        user.firstName = content.get("firstName")
-        user.countryCode = content.get("countryCode")
-        country = Country.objects(CountryCode=content.get("countryCode")).get()
-        if country:
-            user.country = country
-        user.state = content.get("state")
-        
-    signupType = content.get("signupType")    
-    user.signupType = signupType
-
-    if content.get("email"):
-        user.email = content.get("email")
-
-    if content.get("lastName"):
-        user.lastName = content.get("lastName")
-
-    if content.get("phoneNumber"):
-        user.phoneNumber = content.get("phoneNumber")
-
-    if content.get("password"):
-        user.password = generate_password_hash(content.get("password"))
-
-    if content.get("city"):
-        user.city = content.get("city")
-
-    if content.get("zipcode"):
-        user.zipcode = content.get("zipcode")
-
-    if content.get("socialId") and signupType != 1:
-        socialId = content.get("socialId")
-
-        if signupType == 2:
-            user.facebookId = socialId
-        elif signupType == 3:
-            user.twitterId = socialId
-        elif signupType == 4:
-            user.googleId = socialId
-        elif signupType == 5:
-            user.snapchatId = socialId
-
     try:
+        #existing user not update the data
+        if not user.id:
+            user.firstName = content.get("firstName")
+            user.countryCode = content.get("countryCode")
+            country = Country.objects(CountryCode=content.get("countryCode"))
+            if not country:
+                raise Exception('Country Code is Invalid')
+
+            user.country = country.get()
+            user.state = content.get("state")
+            
+        signupType = content.get("signupType")    
+        user.signupType = signupType
+
+        if content.get("email"):
+            user.email = content.get("email")
+
+        if content.get("lastName"):
+            user.lastName = content.get("lastName")
+
+        if content.get("phoneNumber"):
+            user.phoneNumber = content.get("phoneNumber")
+
+        if content.get("password"):
+            user.password = generate_password_hash(content.get("password"))
+
+        if content.get("city"):
+            user.city = content.get("city")
+
+        if content.get("zipcode"):
+            user.zipcode = content.get("zipcode")
+
+        if content.get("socialId") and signupType != 1:
+            socialId = content.get("socialId")
+
+            if signupType == 2:
+                user.facebookId = socialId
+            elif signupType == 3:
+                user.twitterId = socialId
+            elif signupType == 4:
+                user.googleId = socialId
+            elif signupType == 5:
+                user.snapchatId = socialId
+
+    
         user_id = user.save()
         return {'user_id': str(user_id.id)}
     except Exception as e:

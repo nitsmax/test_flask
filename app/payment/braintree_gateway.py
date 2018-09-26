@@ -4,29 +4,29 @@ import braintree
 
 class BraintreeGateway():
 
-	def __init__(self):
+	def __init__(self,config):
 		self.gateway = braintree.BraintreeGateway(
 		    braintree.Configuration(
-		        environment=app.config.get('BT_ENVIRONMENT'),
-		        merchant_id=app.config.get('BT_MERCHANT_ID'),
-		        public_key=app.config.get('BT_PUBLIC_KEY'),
-		        private_key=app.config.get('BT_PRIVATE_KEY')
+		        environment = config['environment'],
+		        merchant_id = config['merchant_id'],
+		        public_key = config['public_key'],
+		        private_key = config['private_key'],
 		    )
 		)
 
 	def generate_client_token(self):
 		try:
-			response = self.gateway.client_token.generate()
-			return {'status': True,'result': response}
+			client_token =  self.gateway.client_token.generate()
+			return {'client_token': client_token}
 		except Exception as e:
-			return {'status': False,'message': str(e)}
+			return {'error': str(e)}
 
 	def create_customer(self, options):
 		try:
-			response = self.gateway.customer.create(options)
-			return {'status': True,'result': response}
+			customer = self.gateway.customer.create(options)
+			return {'customer': customer}
 		except Exception as e:
-			return {'status': False,'message': str(e)}
+			return {'error': str(e)}
 
 	def transact(self,options):
 		try:
@@ -44,7 +44,17 @@ class BraintreeGateway():
 
 	def subscription(self, options):
 		try:
-			response = self.gateway.subscription.create(options)
-			return {'status': True,'response': response}
+			subscription = self.gateway.subscription.create(options)
+			return {'subscription' : subscription}
 		except Exception as e:
-			return {'status': False,'message': str(e)}
+			return {'error': str(e)}
+
+	def parse_errors(self, errorObject):
+		if errorObject.errors and len(errorObject.errors.deep_errors):
+			error = errorObject.errors.deep_errors[0]
+			errMessage = error.message
+			errCode = error.code
+			validationError = True
+		else:
+			pass
+

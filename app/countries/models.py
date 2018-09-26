@@ -16,6 +16,3 @@ class Country(Document):
     status = IntField(default=1)
     date_created = DateTimeField(default=datetime.datetime.utcnow)
     date_modified = DateTimeField(default=datetime.datetime.utcnow)
-
-
-    
