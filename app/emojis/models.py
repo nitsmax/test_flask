@@ -6,6 +6,7 @@ from mongoengine.fields import ListField,\
 import datetime
 from app.users.models import User
 from app.categories.models import Category
+from app.countries.models import Country
 
 class Emoji(Document):
     name = StringField(max_length=255, required=True)
@@ -21,5 +22,7 @@ class Emoji(Document):
 class EmojiDownloads(Document):
     emoji = ReferenceField(Emoji)
     user = ReferenceField(User)
+    country = ReferenceField(Country)
+    region = StringField()
     date_created = DateTimeField(default=datetime.datetime.utcnow)
     date_modified = DateTimeField(default=datetime.datetime.utcnow)

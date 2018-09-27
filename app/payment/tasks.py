@@ -169,4 +169,24 @@ class PaymentRepo():
         except Exception as e:
             return {'error': str(e)}
 
+    def cancel_subscription(self):
+        try:
+            user = g.user
+            subscription = Subscription.objects(user=user)
+            if not subscription:
+                raise Exception("Not subscribed yet")
+
+            subscription = subscription.get()
+            if subscription.paymentGateway == 'Braintree':
+                response_cancel_subscription = self.bt.cancel_subscription(subscription.subscriptionId)
+            elif subscription.paymentGateway == 'Paytm':
+                pass
+
+            if 'error' in response_cancel_subscription:
+                raise Exception(response_cancel_subscription['error'])
+
+            return {'success': True}
+        except Exception as e:
+            return {'error': str(e)}
+
         

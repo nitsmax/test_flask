@@ -229,17 +229,17 @@ def delete_emoji(id):
 @emojis.route('/copy-emoji', methods=['POST'])
 @login_required
 def copy_emoji():
-    return build_response.sent_ok()
     """
     user download a emoji
     """
     try:
-        save_response = emoji_download()
-        if 'error' in save_response:
-            raise Exception(save_response['error'])
-        else:
-            return build_response.build_json({
-                "_id": str(save_response['emoji_download_id'])
-            })
+        content = request.get_json(silent=True)
+        emoji_ids = content.get("emoji_ids")
+        save_responses = []
+        for emoji_id in emoji_ids:
+            save_response = emoji_download(emoji_id, g.user)
+            save_responses.append(save_response)
+        
+        return build_response.build_json({'status': True})  
     except Exception as e:
-        return build_response.build_json({"error": str(e)})
+        return build_response.build_json({'status': False, "error": str(e)})

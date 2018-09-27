@@ -65,25 +65,21 @@ def transpose_emoji(emoji):
         'date_modified': emoji.date_modified.isoformat()
     }
 
-def emoji_download():
-    content = request.get_json(silent=True)
+def emoji_download(emoji_id, user):
+    try:
+        emoji = Emoji.objects.get(id=ObjectId(emoji_id))
+        print("emoji",emoji)
+        if not emoji:
+            raise Exception("No Emoji Found")
 
-    emoji_id = content.get("emoji_id")
-    user_id = content.get("user_id")
-
-    
-    emoji = Emoji.objects.get(id=ObjectId(emoji_id))
-    user = User.objects.get(id=ObjectId(user_id))
-
-    if emoji and user:
         emojiDownloads = EmojiDownloads()
         emojiDownloads.user = user
         emojiDownloads.emoji = emoji
+        emojiDownloads.country = user.country
+        emojiDownloads.region = user.state
 
-        try:
-            emoji_download_id = emojiDownloads.save()
-            return {'emoji_download_id': str(emoji_download_id.id)}
-        except Exception as e:
-            return {'error': str(e)}
-    else:
-        return {'emoji_download_id': ''}
+        emoji_download_id = emojiDownloads.save()
+        return {'emoji_download_id': str(emoji_download_id.id)}
+    except Exception as e:
+        print(str(e))
+        return {'error': str(e)}

@@ -49,6 +49,13 @@ class BraintreeGateway():
 		except Exception as e:
 			return {'error': str(e)}
 
+	def cancel_subscription(self, subscriptionId):
+		try:
+			subscription = self.gateway.subscription.cancel(subscriptionId)
+			return {'subscription' : subscription}
+		except Exception as e:
+			return {'error': str(e)}
+
 	def parse_errors(self, errorObject):
 		if errorObject.errors and len(errorObject.errors.deep_errors):
 			error = errorObject.errors.deep_errors[0]

@@ -108,12 +108,12 @@ def apply_voucher():
         voucher = Voucher.objects(code__exact=content.get('voucher_code'))
         
         if not voucher:
-            raise Exception('Not Exist:Invalid Token')
+            raise Exception('Invalid Voucher')
 
         voucher = voucher.get()
 
         if (voucher.uselimit - voucher.usedNum) <= 0:
-            raise Exception('Invalid Token')
+            raise Exception('Invalid Voucher')
 
         '''
         if voucher.expireDate and voucher.expireDate < datetime.datetime.utcnow:
@@ -122,7 +122,7 @@ def apply_voucher():
         '''
 
         if membershipPlan not in voucher.membershipPlan:
-            raise Exception('Invalid Token')
+            raise Exception('Invalid Voucher')
 
         amount = Decimal(membershipPlan.monthlyAmount - (membershipPlan.monthlyAmount*voucher.discount)/100)
         
@@ -139,3 +139,23 @@ def apply_voucher():
     except Exception as e:
         return build_response.build_json({"status":False, "error": str(e)})
         
+@payment.route('/cancel_subscription')
+@login_required
+def cancel_subscription():
+    try:
+
+        payment_repo = PaymentRepo()
+
+        subscription = payment_repo.cancel_subscription()
+
+        if 'error' in subscription:
+            raise Exception(subscription['error'])
+
+        response = {
+            'status': True,
+            'message': 'Subscription has Cancelled'
+        }
+        return build_response.build_json(response)
+    except Exception as e:
+        print(str(e))
+        return build_response.build_json({"status":False, "error": 'Unable to cancel the subscription'})
