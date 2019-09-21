@@ -137,7 +137,7 @@ def soical_signup():
                 {
                     'status':True,
                     'membership': 'Free' if user.membershipPlan == 0 else 'Paid',
-                    'createdDate': user.date_created,
+                    'createdDate': user.date_created.isoformat(),
                     'auth_token': create_jwttoken(signupType,socialId)[1]
                 }
             )
