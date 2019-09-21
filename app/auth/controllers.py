@@ -78,7 +78,7 @@ def signup():
                 {
                     'status':True,
                     'membership': 'Free' if user.membershipPlan == 0 else 'Paid',
-                    'createdDate': user.date_created.isoformat(),
+                    'createdDate': '2018-09-11',
                     'auth_token': create_jwttoken(1,user.email)[1]
                 }
             )
