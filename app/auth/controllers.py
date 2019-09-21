@@ -42,7 +42,7 @@ def login():
         }
     )
 
-@auth.route('/signup', methods=['POST'])
+@auth.route('/signupss', methods=['POST'])
 def signup():
     """
     SignUp to user and return a token
