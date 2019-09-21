@@ -42,7 +42,7 @@ def login():
         }
     )
 
-@auth.route('/signupss', methods=['POST'])
+@auth.route('/signup', methods=['POST'])
 def signup():
     """
     SignUp to user and return a token
@@ -78,7 +78,7 @@ def signup():
                 {
                     'status':True,
                     'createdDate': '2019-09-10',
-                    'membership': 'FreeBB' if user.membershipPlan == 0 else 'Paid',
+                    'membership': 'Free' if user.membershipPlan == 0 else 'Paid',
                     'auth_token': create_jwttoken(1,user.email)[1]
                 }
             )
