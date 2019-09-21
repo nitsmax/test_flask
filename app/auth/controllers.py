@@ -77,7 +77,7 @@ def signup():
             return build_response.build_json(
                 {
                     'status':True,
-                    'createdDate': '2019-09-10',
+                    'createdDate': user.date_created.isoformat(),
                     'membership': 'Free' if user.membershipPlan == 0 else 'Paid',
                     'auth_token': create_jwttoken(1,user.email)[1]
                 }
