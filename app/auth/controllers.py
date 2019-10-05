@@ -37,6 +37,7 @@ def login():
     return build_response.build_json(
         {
             'status':True,
+            'membership': 'Free' if user.membershipPlan == 0 else 'Paid',
             'auth_token': create_jwttoken(1,user.email)[1]
         }
     )

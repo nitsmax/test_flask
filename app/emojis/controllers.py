@@ -7,7 +7,7 @@ from app.emojis.models import Emoji
 from app.categories.models import Category
 from app.auth.models import login_required
 from app.emojis.tasks import save_emoji, transpose_emoji, emoji_download
-
+import datetime
 
 emojis = Blueprint('emojis_blueprint', __name__,
                     url_prefix='/api/emojis')
@@ -97,7 +97,7 @@ def read_emojis():
 
 
 @emojis.route('/stickers')
-#@login_required
+@login_required
 def stickers():
     """
     return list  of stikers grouped by category
@@ -126,7 +126,8 @@ def stickers():
 
         strikers.append({"category": categoryD})
 
-    return build_response.build_json({'status': True, 'result': strikers})
+    isNewUser = True if (datetime.datetime.now() - g.user.date_created).days <= 7 else False
+    return build_response.build_json({'status': True, 'isNewUser': isNewUser, 'result': strikers})
 
 @emojis.route('/findemojis')
 #@login_required
