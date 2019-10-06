@@ -36,3 +36,15 @@ def transpose_country(country):
         'date_created': country.date_created.isoformat() if country.date_created else '',
         'date_modified': country.date_modified.isoformat() if country.date_modified else ''
     }
+
+def transpose_countries(country):
+    return {
+        'name': country.Name,
+        'code': country.Code
+    }
+
+def transpose_states(state):
+    return {
+        'name': state.stateName,
+        'code': state.stateCode
+    }

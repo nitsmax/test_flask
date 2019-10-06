@@ -3,16 +3,36 @@ from bson.objectid import ObjectId
 from flask import Blueprint, request, Response, g
 from flask import current_app as app
 from app.commons import build_response
-from app.countries.models import Country
+from app.countries.models import Country,Countries,States
 from app.auth.models import login_required, admin_required
-from app.countries.tasks import transpose_country,save_country
+from app.countries.tasks import transpose_country,save_country,transpose_countries,transpose_states
 from app.commons.utils import update_document
 
 
 countries = Blueprint('countries_blueprint', __name__,
                     url_prefix='/api/countries')
 
-@countries.route('/countries')
+@countries.route('/list')
+def list_countries():
+    countries = Countries.objects.order_by('Name')
+    response_countries = []
+
+    for country in countries:
+        obj_country = transpose_countries(country)
+        response_countries.append(obj_country)
+
+    return build_response.build_json(response_countries)
+
+@countries.route('/<countryCode>/states')
+def list_states(countryCode):
+    states = States.objects().filter(countryCode__iexact=countryCode).order_by('stateName')
+    response_states = []
+
+    for state in states:
+        obj_country = transpose_states(state)
+        response_states.append(obj_country)
+
+    return build_response.build_json(response_states)
 
 @countries.route('', methods=['POST'])
 #@admin_required
