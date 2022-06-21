@@ -28,7 +28,7 @@ JSON-log-formatter==0.2.0
 MarkupSafe==1.0
 mongoengine==0.15.0
 more-itertools==4.3.0
-numpy==1.15.0
+numpy==1.22.0
 parsedatetime==2.4
 pathlib2==2.3.2
 pluggy==0.7.1
